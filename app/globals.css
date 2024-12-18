@@ -1,0 +1,145 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* --primary: #51c27c; */
+  --primary: #202327;
+  --secondary: #f06a3d;
+
+  --bg: #fbfbfb;
+  --hot-bg: #ff000018;
+
+  --dark: #000;
+  /* --footer-dark: #092131; */
+
+  --gray: #555555;
+  --gray-1: #656565;
+  --gray-2: #676767;
+  --gray-3: #aaaaaa;
+
+  --slate: #e8e8e8;
+  --slate-1: #f8f8f8;
+  --slate-2: #f6f6f7;
+  --slate-3: #f3f5f8;
+  --slate-4: #fafafa;
+
+  /* --border-color: #d2eadd; */
+  --border-color: #e1e6e3;
+
+  --border-dark: #525255;
+}
+
+body,
+html {
+  scroll-behavior: smooth !important;
+  font-family: "SolaimanLipi", Arial, sans-serif !important;
+}
+
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  ::-webkit-file-upload-button {
+    display: none;
+  }
+
+  :is(.dark .dark\:stroke-white) {
+    stroke: #fff;
+  }
+
+  body {
+    @apply dark:bg-[#202327];
+  }
+}
+
+@layer components {
+  .category-text {
+    @apply text-2xl md:text-3xl pl-4 dark:text-white text-[var(--primary)] relative before:absolute before:bg-[var(--primary)] before:w-[3px] before:h-[80%] before:left-0 before:top-0 before:bottom-0 before:my-auto;
+  }
+}
+
+/**================================================== *
+ * ==========  Scroll Bar  ========== *
+ * ================================================== */
+.sidebar-scrollbar-none::-webkit-scrollbar {
+  display: none;
+}
+
+.sidebar-scrollbar-none {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+/* =======  End of Scroll Bar  ======= */
+
+/**================================================== *
+ * ==========  Archive  ========== *
+ * ================================================== */
+.archive-date-picker .react-datepicker-wrapper {
+  display: inline !important;
+}
+.archive-date-picker .react-datepicker__close-icon {
+  right: 5px;
+}
+.archive-date-picker .react-datepicker__close-icon::after {
+  background-color: transparent;
+  color: var(--gray);
+  font-size: 28px;
+}
+
+/* =======  End of Archive  ======= */
+
+/**================================================== *
+ * ==========  Spin  ========== *
+ * ================================================== */
+.spin-icon {
+  display: inline;
+  /* width: 20px;
+  height: 20px; */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+/* =======  End of Spin  ======= */
+
+/**================================================== *
+ * ==========  slick slider  ========== *
+ * ================================================== */
+.slick-dots li {
+  display: none;
+}
+
+.slick-dots li.slick-active {
+  display: block;
+}
+
+/* =======  End of slick slider  ======= */
+
+/**================================================== *
+ * ==========  scroll to top  ========== *
+ * ================================================== */
+
+.scrollToTop {
+  position: fixed;
+  bottom: 0;
+  right: 24px;
+
+  transform: translateY(100%);
+}
+
+.scrollActive {
+  bottom: 30px;
+  transform: translateY(0%);
+}
+/* .news_view img {
+  width: 100%;
+  max-height: 250px;
+} */
+/* =======  End of scroll to top  ======= */

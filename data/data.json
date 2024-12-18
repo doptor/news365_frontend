@@ -1,0 +1,83 @@
+{
+  "data": {
+    "photo_post": [
+      {
+        "category_name": "জাতীয়",
+        "category": "national",
+        "id": 5,
+        "post_by_image": "http://24.199.122.48/news365/./uploads/user/w.jpg",
+        "thumb_photo": "http://24.199.122.48/norail-protidin/uploads/viena-20231023053505.jpg",
+        "post_by_name": "Johan",
+        "post_by_id": 1,
+        "title": "হংবাও ঢাকার একটি অসাধারন রেস্টুরেন্ট যা আধুনিক চীনা ",
+        "timestamp": 0,
+        "photos": [
+          {
+            "thumb_photo": "http://24.199.122.48/norail-protidin/uploads/viena-20231023053505.jpg",
+            "large_photo": "http://24.199.122.48/norail-protidin/uploads/thumb/viena-20231023053505.jpg",
+            "phot_title": "viena-20231023053505",
+            "photo_reference": null
+          },
+          {
+            "thumb_photo": "http://24.199.122.48/norail-protidin/uploads/jono-prosason-20231023132238.jpg",
+            "large_photo": "http://24.199.122.48/norail-protidin/uploads/thumb/jono-prosason-20231023132238.jpg",
+            "phot_title": "jono-prosason-20231023132238",
+            "photo_reference": null
+          },
+          {
+            "thumb_photo": "http://24.199.122.48/norail-protidin/uploads/uae-20231021185248.jpg",
+            "large_photo": "http://24.199.122.48/norail-protidin/uploads/thumb/uae-20231021185248.jpg",
+            "phot_title": "uae-20231021185248",
+            "photo_reference": null
+          },
+          {
+            "thumb_photo": "http://24.199.122.48/norail-protidin/uploads/Screenshot_5.jpg",
+            "large_photo": "http://24.199.122.48/norail-protidin/uploads/thumb/Screenshot_5.jpg",
+            "phot_title": "Screenshot_5",
+            "photo_reference": null
+          }
+        ]
+      },
+      {
+        "category_name": "জাতীয়",
+        "category": "national",
+        "id": 5,
+        "post_by_image": "http://24.199.122.48/news365/./uploads/user/w.jpg",
+        "post_by_name": "Johan",
+        "post_by_id": 1,
+        "title": "হংবাও ঢাকার একটি অসাধারন রেস্টুরেন্ট যা আধুনিক চীনা ",
+        "timestamp": 0,
+        "photos": [
+          {
+            "thumb_photo": "http://24.199.122.48/norail-protidin/uploads/viena-20231023053505.jpg",
+            "large_photo": "http://24.199.122.48/norail-protidin/uploads/thumb/viena-20231023053505.jpg",
+            "phot_title": "viena-20231023053505",
+            "photo_reference": null
+          },
+          {
+            "thumb_photo": "http://24.199.122.48/norail-protidin/uploads/jono-prosason-20231023132238.jpg",
+            "large_photo": "http://24.199.122.48/norail-protidin/uploads/thumb/jono-prosason-20231023132238.jpg",
+            "phot_title": "jono-prosason-20231023132238",
+            "photo_reference": null
+          },
+          {
+            "thumb_photo": "http://24.199.122.48/norail-protidin/uploads/uae-20231021185248.jpg",
+            "large_photo": "http://24.199.122.48/norail-protidin/uploads/thumb/uae-20231021185248.jpg",
+            "phot_title": "uae-20231021185248",
+            "photo_reference": null
+          },
+          {
+            "thumb_photo": "http://24.199.122.48/norail-protidin/uploads/Screenshot_5.jpg",
+            "large_photo": "http://24.199.122.48/norail-protidin/uploads/thumb/Screenshot_5.jpg",
+            "phot_title": "Screenshot_5",
+            "photo_reference": null
+          }
+        ]
+      }
+    ],
+    "ads": {
+      "news_view_31": "<a href=\"http://\"><img width=\"100%\" src=\"http://24.199.122.48/norail-protidin/uploads/Advertizement/1.png\" alt=\"\"></a>",
+      "news_view_32": "<a href=\"http://\"><img width=\"100%\" src=\"http://24.199.122.48/norail-protidin/uploads/Advertizement/1.png\" alt=\"\"></a>"
+    }
+  }
+}
