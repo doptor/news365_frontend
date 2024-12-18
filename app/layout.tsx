@@ -7,6 +7,8 @@ import instance from "@/utils/instance";
 import { Metadata } from "next";
 import 'react-loading-skeleton/dist/skeleton.css';
 
+import "moment/locale/bn";
+
 // react-datepicker css
 import "react-datepicker/dist/react-datepicker.css";
 
@@ -16,13 +18,14 @@ import "slick-carousel/slick/slick.css";
 //global css
 import "./globals.css";
 import DynamicFavicon from "@/components/dynamicFavicon/DynamicFavicon";
+import moment from "moment";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await instance.get("/metadata");
 
   const { title, image, meta_keyword, meta_description, site_name, favicon } =
     data?.data;
-   
+
   const faviconWithCacheBuster = `${favicon}?v=${new Date().getTime()}`;
   return {
     title: title,
@@ -56,7 +59,12 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
- 
+
+
+  moment.locale('bn');
+  const location = "ঢাকা";
+  const timenow = moment().format('LLLL');
+  const last_updated = "আপডেট ১ ঘন্টা আগে";
 
   return (
     <html lang="en">
@@ -67,8 +75,13 @@ export default function RootLayout({
         />
       </head>
       <body>
-      <ThemeWrapper>
+        <ThemeWrapper>
           <WebSettingProvider>
+            <div style={{ background: "#a00303", color: "white" }}>
+              <div className="container px-4 py-4 mx-auto">
+                {location + ' ' + timenow + ' ' + last_updated}
+              </div>
+            </div>
             <NavBar />
 
             {children}
