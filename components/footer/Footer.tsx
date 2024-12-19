@@ -55,9 +55,9 @@ const Footer = () => {
             <p className="text-black dark:text-white text-xl">
               {contact?.editor}
             </p>
-            <div className="mb-3 flex gap-3 justify-center">
+            {/* <div className="mb-3 flex gap-3 justify-center">
               <Socials socialMediaLinks={social_link} />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="mb-3 flex flex-wrap justify-center text-center gap-4 lg:gap-6  text-black dark:text-white ">
