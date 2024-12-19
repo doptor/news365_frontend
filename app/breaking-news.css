@@ -1,0 +1,42 @@
+.scroller-title {
+  width: 160px;
+  background: #a00303;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.news-scroll {
+  display: inline-block;
+  overflow: hidden;
+  text-align: initial;
+  white-space: nowrap;
+}
+
+.breaking-news {
+  display: flex; /* Ensures children are laid out inline */
+  align-items: center; /* Aligns children vertically in the center */
+  overflow: hidden;
+}
+
+.marquee-wrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.marquee {
+  white-space: nowrap;
+  display: inline-block;
+  animation: marquee 40s linear infinite; /* Animation for scrolling */
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-100%); } /* Adjust percentage based on content length */
+}
+

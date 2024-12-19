@@ -1,13 +1,13 @@
 import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/navBar/NavBar";
+import BreakingNews from "@/components/home/BreakingNews";
+import TopTimeBar from "@/components/home/TopTimeBar";
 import ScrollToTop from "@/components/scrollToTop/ScrollToTop";
 import ThemeWrapper from "@/components/themeWrapper/ThemeWrapper";
 import WebSettingProvider from "@/context/webSettingContext";
 import instance from "@/utils/instance";
 import { Metadata } from "next";
 import 'react-loading-skeleton/dist/skeleton.css';
-
-import "moment/locale/bn";
 
 // react-datepicker css
 import "react-datepicker/dist/react-datepicker.css";
@@ -18,7 +18,6 @@ import "slick-carousel/slick/slick.css";
 //global css
 import "./globals.css";
 import DynamicFavicon from "@/components/dynamicFavicon/DynamicFavicon";
-import moment from "moment";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await instance.get("/metadata");
@@ -60,12 +59,6 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
 
-
-  moment.locale('bn');
-  const location = "ঢাকা";
-  const timenow = moment().format('LLLL');
-  const last_updated = "আপডেট ১ ঘন্টা আগে";
-
   return (
     <html lang="en">
       <head>
@@ -77,12 +70,12 @@ export default function RootLayout({
       <body>
         <ThemeWrapper>
           <WebSettingProvider>
-            <div style={{ background: "#a00303", color: "white" }}>
-              <div className="container px-4 py-4 mx-auto">
-                {location + ' ' + timenow + ' ' + last_updated}
-              </div>
-            </div>
+
+            <TopTimeBar />
+
             <NavBar />
+
+            <BreakingNews />
 
             {children}
 
