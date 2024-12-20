@@ -15,6 +15,7 @@ import AddCard from "../common/addCard/AddCard";
 import LatestNewsHorizontal from "../common/latestNews/LatestNewsHorizontal";
 import timestampToEnglishDateWithTime from "@/utils/timestampToBangleDateWithTime";
 
+import instance from "@/utils/instance";
 import { youtube_embedded_video_url } from "@/utils/video_embed";
 
 interface Tag {
@@ -51,6 +52,25 @@ const SingleNewsDetails = ({
 }) => {
   const [currentUrl, setCurrentUrl] = useState("");
   const [hostName, setHostName] = useState("");
+
+  const [commentText, setCommentText] = useState("");
+  const [commentSuccessText, setCommentSuccessText] = useState<String | null>("");
+  const [commentErrorText, setCommentErrorText] = useState<String | null>("");
+
+  const handleCommentSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const {data} = await instance.post('/comment', commentText);
+      if (data.code === 200) {
+        setCommentSuccessText("comment success");
+      }
+    } catch (error: any) {
+      console.log(error);
+      setCommentErrorText(error.message);
+    } finally {
+
+    }
+  };
 
   const {
     id,
@@ -221,6 +241,32 @@ const SingleNewsDetails = ({
               })}
             </div>
 
+            <div>
+              comments
+
+              <div className="container mt-5">
+                <div className="row justify-content-center">
+                  <div className="col">
+                    <div className="card">
+                      <div className="card-header">
+                        make a comment
+                      </div>
+                      <div className="card-body">
+                        <form onSubmit={handleCommentSubmit}>
+                          <div className="mb-3">
+                            <textarea className="form-control border" id="myTextarea" rows={5} placeholder="Write your comment and hit submit" value={commentText} onChange={(e) => setCommentText(e.target.value)}></textarea>
+                          </div>
+                          <button type="submit" className="btn btn-outline-primary border">Submit Comment</button>
+                        </form>
+                        {commentSuccessText && <div className="alert alert-success">{commentSuccessText}</div>}
+                        {commentErrorText && <div className="alert alert-danger">{commentErrorText}</div>}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
             <div className="container mx-auto print:hidden">
               <div className="relative mt-6 mb-6 before:absolute before:bg-[var(--border-color)] before:w-full before:h-[1px] before:left-0 before:-top-3 after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:left-0 after:-bottom-2 print:hidden dark:before:bg-[var(--border-color)] dark:after:bg-[var(--border-dark)]">
                 <p className="text-[var(--primary)] text-xl md:text-2xl dark:text-white">
@@ -331,9 +377,8 @@ const SingleNewsDetails = ({
                   <div className="mb-6 relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:-bottom-3 after:right-0 dark:after:bg-[var(--border-dark)] before:h-px before:-top-3 before:bg-[var(--border-color)] dark:before:bg-[var(--border-color)] before:absolute before:w-full">
                     <div className="w-full flex items-center justify-center">
                       <div
-                        className={`${
-                          data.ads.news_view_32 ? "" : "h-[250px]"
-                        }`}
+                        className={`${data.ads.news_view_32 ? "" : "h-[250px]"
+                          }`}
                       >
                         <AddCard imgPath={data.ads.news_view_32} />
                       </div>
