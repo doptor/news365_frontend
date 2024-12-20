@@ -15,6 +15,8 @@ import AddCard from "../common/addCard/AddCard";
 import LatestNewsHorizontal from "../common/latestNews/LatestNewsHorizontal";
 import timestampToEnglishDateWithTime from "@/utils/timestampToBangleDateWithTime";
 
+import { youtube_embedded_video_url } from "@/utils/video_embed";
+
 interface Tag {
   tag: string;
 }
@@ -173,7 +175,7 @@ const SingleNewsDetails = ({
                     className="aspect-video h-auto w-full"
                     width={200}
                     height={113}
-                    src={video}
+                    src={youtube_embedded_video_url(video)}
                     title={title}
                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   ></iframe>
