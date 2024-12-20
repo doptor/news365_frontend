@@ -1,7 +1,5 @@
 "use client";
 
-import { useState } from "react";
-import instance from "@/utils/instance";
 import useSWR from "swr";
 import fetcher from "@/utils/fetcher";
 

@@ -22,7 +22,7 @@ const TopTimeBar = () => {
     if (webSettingLoading) content = <div className="text-center"></div>;
 
     if (webSettingData) {
-        const { contact, social_link, footer_logo } = webSettingData;
+        const { social_link } = webSettingData;
 
 
         moment.locale('bn');
@@ -34,7 +34,7 @@ const TopTimeBar = () => {
         return (
             <div style={{ background: "#a00303", color: "white" }}>
                 <div className="container px-4 py-4 mx-auto flex justify-between">
-                    <span>{location + ' ' + timenow } </span>
+                    <span>{location + ' ' + timenow} </span>
 
                     <div className="mb-3 flex gap-3 justify-center text-white">
                         <Socials socialMediaLinks={social_link} />
