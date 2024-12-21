@@ -16,7 +16,8 @@ import LatestNewsHorizontal from "../common/latestNews/LatestNewsHorizontal";
 import timestampToEnglishDateWithTime from "@/utils/timestampToBangleDateWithTime";
 
 import instance from "@/utils/instance";
-import { youtube_embedded_video_url } from "@/utils/video_embed";
+
+import VideoEmbed from "@/components/VideoEmbed";
 
 import "@/app/commentlist.css";
 
@@ -224,14 +225,16 @@ const SingleNewsDetails = ({
               </div>
               <div className="clss">
                 {video ? (
-                  <iframe
-                    className="aspect-video h-auto w-full"
-                    width={200}
-                    height={113}
-                    src={youtube_embedded_video_url(video)}
-                    title={title}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  ></iframe>
+                  // <iframe
+                  //   className="aspect-video h-auto w-full"
+                  //   width={200}
+                  //   height={113}
+                  //   src={youtube_embedded_video_url(video)}
+                  //   title={title}
+                  //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  // ></iframe>
+
+                  <VideoEmbed videoUrl={video} title={title}/>
                 ) : (
                   <figure>
                     <Image
