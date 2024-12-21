@@ -18,6 +18,18 @@ import timestampToEnglishDateWithTime from "@/utils/timestampToBangleDateWithTim
 import instance from "@/utils/instance";
 import { youtube_embedded_video_url } from "@/utils/video_embed";
 
+import "@/app/commentlist.css";
+
+interface Comment {
+  comments: string;
+  com_username: string;
+  created_at: string; // You might want to use a Date object here
+}
+
+interface CommentListProps {
+  comments: Comment[];
+}
+
 interface Tag {
   tag: string;
 }
@@ -53,20 +65,41 @@ const SingleNewsDetails = ({
   const [currentUrl, setCurrentUrl] = useState("");
   const [hostName, setHostName] = useState("");
 
+  const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState("");
+  const [commentUsername, setCommentUsername] = useState("");
   const [commentSuccessText, setCommentSuccessText] = useState<String | null>("");
   const [commentErrorText, setCommentErrorText] = useState<String | null>("");
 
+  const get_comments = () => {
+    try {
+      instance.get('/comment').then(resp => {
+        setComments(resp.data.data);
+      }).catch((error) => console.error(error));
+    } catch (error: any) {
+      console.log(error);
+    } finally { }
+  };
+
+  useEffect(() => get_comments(), []);
+
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    const { id } = data;
     try {
-      const {data} = await instance.post('/comment', commentText);
+      const { data } = await instance.post('/comment', { 'comment_text': commentText, 'post_id': id, 'username': commentUsername });
       if (data.code === 200) {
         setCommentSuccessText("comment success");
+        setCommentErrorText("");
+        setCommentText('');
+        setCommentUsername('');
+
+        get_comments();
       }
     } catch (error: any) {
       console.log(error);
       setCommentErrorText(error.message);
+      setCommentSuccessText("");
     } finally {
 
     }
@@ -242,28 +275,63 @@ const SingleNewsDetails = ({
             </div>
 
             <div>
-              comments
 
               <div className="container mt-5">
+
                 <div className="row justify-content-center">
-                  <div className="col">
-                    <div className="card">
-                      <div className="card-header">
-                        make a comment
-                      </div>
-                      <div className="card-body">
-                        <form onSubmit={handleCommentSubmit}>
-                          <div className="mb-3">
-                            <textarea className="form-control border" id="myTextarea" rows={5} placeholder="Write your comment and hit submit" value={commentText} onChange={(e) => setCommentText(e.target.value)}></textarea>
-                          </div>
-                          <button type="submit" className="btn btn-outline-primary border">Submit Comment</button>
-                        </form>
-                        {commentSuccessText && <div className="alert alert-success">{commentSuccessText}</div>}
-                        {commentErrorText && <div className="alert alert-danger">{commentErrorText}</div>}
-                      </div>
-                    </div>
+                  <div className="comment-list-container">
+                    <h2>Comments</h2>
+                    {comments.length === 0 ? (
+                      <p className="no-comments">No comments yet.</p>
+                    ) : (
+                      <ul className="comment-list">
+                        {comments.map((comment: Comment, index) => (
+                          <li key={index} className="comment">
+                            <div className="comment-header">
+                              <span className="comment-author">{comment.com_username}</span>
+                              <span className="comment-date">{comment.created_at}</span>
+                            </div>
+                            <div className="comment-body">
+                              <p>{comment.comments}</p>
+                            </div>
+                          </li>
+                        ))}
+                      </ul>
+                    )}
                   </div>
                 </div>
+
+                <div className="comment-form-container">
+                  <h2>Leave a Comment</h2>
+                  <form onSubmit={handleCommentSubmit} className="comment-form">
+                    <div className="form-group">
+                      <textarea
+                        className="form-control comment-textarea"
+                        placeholder="Write your comment..."
+                        value={commentText}
+                        onChange={(e) => setCommentText(e.target.value)}
+                        rows={5} // Adjust number of rows as needed
+                      />
+                    </div>
+                    <div className="form-group">
+                      <input
+                        type="text"
+                        className="form-control comment-username"
+                        placeholder="Your Name"
+                        value={commentUsername}
+                        onChange={(e) => setCommentUsername(e.target.value)}
+                      />
+                    </div>
+                    <button type="submit" className="btn btn-primary comment-submit-btn">
+                      Submit Comment
+                    </button>
+
+                    {commentSuccessText && <div className="message message-success">{commentSuccessText}</div>}
+                    {commentErrorText && <div className="message message-danger">{commentErrorText}</div>}
+
+                  </form>
+                </div>
+
               </div>
             </div>
 
