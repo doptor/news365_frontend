@@ -73,8 +73,12 @@ const SingleNewsDetails = ({
   const [commentErrorText, setCommentErrorText] = useState<String | null>("");
 
   const get_comments = () => {
+    if (!data.id) {
+      console.warn('cannot fetch comments, post id not available');
+      return;
+    }
     try {
-      instance.get('/comment').then(resp => {
+      instance.get('/comment' + '?post_id=' + data.id).then(resp => {
         setComments(resp.data.data);
       }).catch((error) => console.error(error));
     } catch (error: any) {
@@ -82,7 +86,7 @@ const SingleNewsDetails = ({
     } finally { }
   };
 
-  useEffect(() => get_comments(), []);
+  useEffect(() => get_comments(), [data.id]);
 
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -234,7 +238,7 @@ const SingleNewsDetails = ({
                   //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   // ></iframe>
 
-                  <VideoEmbed videoUrl={video} title={title}/>
+                  <VideoEmbed videoUrl={video} title={title} />
                 ) : (
                   <figure>
                     <Image
