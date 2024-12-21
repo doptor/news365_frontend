@@ -11,7 +11,7 @@ const nextConfig = {
         hostname: "**",
       },
     ],
-    domains: ["news.doptor.net"],
+    domains: ["news.doptor.net", "dailyniropekkho.com"],
   },
 };
 
