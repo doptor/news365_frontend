@@ -16,7 +16,7 @@ const BreakingNews = () => {
     );
 
     if (error) return <div>Error loading data</div>;
-    if (isLoading) return <div>Loading...</div>;
+    if (isLoading) return <div></div>;
 
     return (
         <div className="container mx-auto my-2">

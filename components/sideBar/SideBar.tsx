@@ -46,7 +46,7 @@ const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
   let content;
 
   if (error) content = <div>There was an Error!</div>;
-  if (isLoading) content = <div>Loading.....</div>;
+  if (isLoading) content = <div></div>;
   if (data)
     content = (
       <ul>
