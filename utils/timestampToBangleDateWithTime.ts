@@ -28,7 +28,7 @@ import moment from "moment";
 
 function timestampToBanglaDateWithTime(timestamp: number): string {
   moment.locale('bn');
-  const output = moment.unix(timestamp).format('dddd, Do MMMM YYYY HH:mm');
+  const output = moment.unix(timestamp).format('dddd, Do MMMM YYYY | a h:mm মিনিট');
   return output;
 }
 
