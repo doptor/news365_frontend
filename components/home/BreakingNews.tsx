@@ -29,7 +29,7 @@ const BreakingNews = () => {
                         <div className="marquee-wrapper">
                             <div className="marquee">
                                 {data.map((entry: any) => {
-                                    return <a className="mx-6" key={entry.news_title} href={""}>{entry.news_title}</a>
+                                    return <a className="mx-6" key={entry.news_title} href={"javascript:void(0)"}>{entry.news_title}</a>
                                 })}
                             </div>
                         </div>
