@@ -143,3 +143,8 @@ html {
   max-height: 250px;
 } */
 /* =======  End of scroll to top  ======= */
+
+
+a :hover {
+  color: rgb(160, 3, 3);
+}

@@ -19,6 +19,7 @@ import instance from "@/utils/instance";
 
 import VideoEmbed from "@/components/VideoEmbed";
 
+import "@/app/singleNewsDetails.css";
 import "@/app/commentlist.css";
 
 interface Comment {
@@ -160,7 +161,8 @@ const SingleNewsDetails = ({
                     </li>
                   </ol>
                 </nav>
-                <h1 className="text-[var(--dark)] text-3xl lg:text-4xl leading-[40px] lg:leading-[50px] mb-6 dark:text-white print:dark:text-[var(--dark)] print:text-2xl print:mb-2">
+                <h2 style={{"font-size": "1.2em"}} className="my-1">{stitle}</h2>
+                <h1 style={{"font-weight": "bold"}} className="text-[var(--dark)] text-3xl lg:text-4xl leading-[40px] lg:leading-[50px] mb-6 dark:text-white print:dark:text-[var(--dark)] print:text-2xl print:mb-2">
                   {title}
                 </h1>
                 <div className="flex flex-col md:flex-row gap-3 items-center justify-between relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:right-0 after:-top-3 dark:after:bg-[var(--border-dark)] print:after:bg-transparent">
@@ -254,7 +256,7 @@ const SingleNewsDetails = ({
               </div>
               <div className="text-[var(--dark)] mt-3 text-xl leading-8 print:leading-7 dark:text-white break-words print:dark:text-[var(--dark)] print:text-base">
                 <div>
-                  <strong>{stitle}</strong>
+                  <strong style={{display: "none"}}>{stitle}</strong>
 
                   <div className="my-3 flex flex-col">
                     <div

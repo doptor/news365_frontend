@@ -1,0 +1,6 @@
+iframe .ytp-pause-overlay-container {
+    display: none;
+}
+iframe .ytp-chrome-top.ytp-show-cards-title {
+    display: none;
+}
