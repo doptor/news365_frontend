@@ -55,6 +55,7 @@ interface SingleNews {
   tags: Tag[];
   relatedPost: NewsArticle[];
   ads?: any;
+  image_title?: string
 }
 
 const SingleNewsDetails = ({
@@ -118,6 +119,7 @@ const SingleNewsDetails = ({
     encode_title,
     image_thumb,
     image_large,
+    image_title,
     slug,
     news,
     video,
@@ -248,9 +250,10 @@ const SingleNewsDetails = ({
                       width={1200}
                       height={675}
                       decoding="async"
-                      className="w-full h-auto mb-1"
+                      className="w-full h-auto"
                       src={image_large}
                     />
+                    <div className="text-center post_image_title bg_lite border_bottom py-1 mb-1">{image_title}</div>
                   </figure>
                 )}
               </div>

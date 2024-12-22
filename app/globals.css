@@ -148,3 +148,21 @@ html {
 a :hover {
   color: rgb(160, 3, 3);
 }
+
+
+/** for a single news post */
+
+.post_image_title {
+  color: #212529e0;
+  border-radius: 0 0 5px 5px;
+  font-size: 0.9em;
+}
+
+.bg_lite {
+  --bs-bg-opacity: 1;
+  background-color: rgba(248, 249, 250, 1) !important;
+}
+
+.border_bottom {
+  border-bottom: 1px solid #dee2e6 !important;
+}
