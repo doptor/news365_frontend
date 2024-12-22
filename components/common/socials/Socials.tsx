@@ -31,7 +31,7 @@ const Socials = ({
   return (
     <>
       <Link className="group" href={fb} aria-label="facebook" target="_blank">
-        <div style={{background: "white"}} className="w-6 h-6 border-[1px] border-black/30 dark:border-white flex justify-center items-center rounded-sm group-hover:border-black duration-500 ease-out">
+        <div style={{background: "white"}} className="w-4 h-4 border-[1px] border-black/30 dark:border-white flex justify-center items-center rounded-sm group-hover:border-black duration-500 ease-out">
           <FacebookIcon />
         </div>
       </Link>
@@ -46,12 +46,12 @@ const Socials = ({
         </div>
       </Link> */}
       <Link className="group" href={tw} target="_blank" aria-label="twitter">
-        <div style={{background: "white"}} className="w-6 h-6 border-[1px] border-black/30 dark:border-white flex justify-center items-center rounded-sm group-hover:border-black duration-500 ease-out">
+        <div style={{background: "white"}} className="w-4 h-4 border-[1px] border-black/30 dark:border-white flex justify-center items-center rounded-sm group-hover:border-black duration-500 ease-out">
           <TwitterIcon />
         </div>
       </Link>
       <Link className="group" href={youtube} aria-label="youtube">
-        <div style={{background: "white"}} className="w-6 h-6 border-[1px] border-black/30 dark:border-white flex justify-center items-center rounded-sm group-hover:border-black duration-500 ease-out">
+        <div style={{background: "white"}} className="w-4 h-4 border-[1px] border-black/30 dark:border-white flex justify-center items-center rounded-sm group-hover:border-black duration-500 ease-out">
           <YoutubeIcon />
         </div>
       </Link>
@@ -61,15 +61,15 @@ const Socials = ({
         aria-label="linkedin"
         target="_blank"
       >
-        <div style={{background: "white"}} className="w-6 h-6 border-[1px] border-black/30 dark:border-white flex justify-center items-center rounded-sm group-hover:border-black duration-500 ease-out">
+        <div style={{background: "white"}} className="w-4 h-4 border-[1px] border-black/30 dark:border-white flex justify-center items-center rounded-sm group-hover:border-black duration-500 ease-out">
           <LinkedinIcon />
         </div>
       </Link>
-      <Link className="group" href="/" aria-label="playstore">
-        <div style={{background: "white"}} className="w-6 h-6 border-[1px] border-black/30 dark:border-white flex justify-center items-center rounded-sm group-hover:border-black duration-500 ease-out">
+      {/* <Link className="group" href="/" aria-label="playstore">
+        <div style={{background: "white"}} className="w-4 h-4 border-[1px] border-black/30 dark:border-white flex justify-center items-center rounded-sm group-hover:border-black duration-500 ease-out">
           <PlayStoreIcon />
         </div>
-      </Link>
+      </Link> */}
     </>
   );
 };
