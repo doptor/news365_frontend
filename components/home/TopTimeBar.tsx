@@ -7,6 +7,8 @@ import "moment/locale/bn";
 import moment from "moment";
 import Socials from "../common/socials/Socials";
 
+import "@/app/datebar.css";
+
 const TopTimeBar = () => {
     const {
         data: webSettingData,
@@ -34,7 +36,7 @@ const TopTimeBar = () => {
         return (
             <div style={{ background: "#a00303", color: "white" }}>
                 <div className="container px-4 py-4 mx-auto flex justify-between">
-                    <span>{location + ' ' + timenow} </span>
+                    <span className="topdate">{location + ' ' + timenow} </span>
 
                     <div className="mb-3 flex gap-3 justify-center text-white">
                         <Socials socialMediaLinks={social_link} />
