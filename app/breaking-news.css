@@ -29,6 +29,10 @@
   position: relative;
 }
 
+.marquee-wrapper:hover .marquee {
+  animation-play-state: paused; 
+}
+
 .marquee {
   white-space: nowrap;
   display: inline-block;
