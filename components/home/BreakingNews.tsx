@@ -27,7 +27,7 @@ const BreakingNews = () => {
                             <div className="d-flex justify-content-center align-items-center py-2 text-white px-1 scroller-title">
                                 <span>শিরোনাম</span>
                             </div>
-                            <div className="marquee-wrapper">
+                            <div className="marquee-wrapper mx-3">
                                 <div className="marquee">
                                     {data.map((entry: any) => {
                                         return <a className="mx-6" key={entry.news_title} href={"javascript:void(0)"}>{entry.news_title}</a>
