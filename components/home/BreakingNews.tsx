@@ -24,7 +24,7 @@ const BreakingNews = () => {
                 <div className="col-md-12">
                     <div className="d-flex justify-content-between align-items-center breaking-news bg-white">
                         <div className="d-flex justify-content-center align-items-center py-2 text-white px-1 scroller-title">
-                            <span>Breaking</span>
+                            <span>শিরোনাম</span>
                         </div>
                         <div className="marquee-wrapper">
                             <div className="marquee">
