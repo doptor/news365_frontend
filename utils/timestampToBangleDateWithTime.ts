@@ -24,8 +24,21 @@
 
 // export default timestampToBangleDateWithTime;
 
+import moment from "moment";
+
+function timestampToBanglaDateWithTime(timestamp: number): string {
+  moment.locale('bn');
+  const output = moment.unix(timestamp).format('dddd, Do MMMM YYYY HH:mm');
+  return output;
+}
+
 
 function timestampToEnglishDateWithTime(timestamp: number): string {
+
+  return timestampToBanglaDateWithTime(timestamp);
+
+  /* only Bangla support
+
   // Convert to milliseconds
   const date = new Date(timestamp * 1000);
 
@@ -46,6 +59,8 @@ function timestampToEnglishDateWithTime(timestamp: number): string {
   ).format(date);
 
   return formattedDate;
+  */
+
 }
 
 export default timestampToEnglishDateWithTime;
