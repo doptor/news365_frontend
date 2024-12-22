@@ -20,11 +20,11 @@ const BreakingNews = () => {
 
     return (
         <section>
-            <div className="container px-4 mx-auto my-2">
+            <div className="container px-4 mx-auto my-1">
                 <div className="row">
                     <div className="col-md-12">
                         <div className="d-flex justify-content-between align-items-center breaking-news bg-white">
-                            <div className="d-flex justify-content-center align-items-center py-2 text-white px-1 scroller-title">
+                            <div className="d-flex justify-content-center align-items-center py-1 px-4 text-white scroller-title">
                                 <span>শিরোনাম</span>
                             </div>
                             <div className="marquee-wrapper mx-3">
