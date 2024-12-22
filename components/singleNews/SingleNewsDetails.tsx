@@ -146,7 +146,13 @@ const SingleNewsDetails = ({
 
   return (
     <div className={clss}>
+
       <div className="container px-4 mx-auto print:px-0">
+
+      <div className={`${data.ads.news_view_31 ? "" : "h-[250px]"} mb-4`}>
+                <AddCard imgPath={data.ads.news_view_31} />
+              </div>
+
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 print:!block">
           <div className="col-span-12 lg:col-span-8 xl:col-span-9 relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:right-0 after:-bottom-3 lg:after:top-0 lg:after:-right-3 lg:after:w-[1px] lg:after:h-full dark:after:bg-[var(--border-dark)] print:!col-span-12 print:after:bg-transparent">
             <article>
@@ -402,9 +408,9 @@ const SingleNewsDetails = ({
 
           <div className="col-span-12 lg:col-span-4 xl:col-span-3 print:hidden">
             <div className="xl:sticky xl:top-[4rem]">
-              <div className={`${data.ads.news_view_31 ? "" : "h-[250px]"}`}>
+              {/* <div className={`${data.ads.news_view_31 ? "" : "h-[250px]"}`}>
                 <AddCard imgPath={data.ads.news_view_31} />
-              </div>
+              </div> */}
 
               <div className="mb-3">
                 <div className="mt-3 mb-3 border-[var(--border-color)] border-t-[1px] border-b-[1px] dark:border-[var(--border-dark)]">

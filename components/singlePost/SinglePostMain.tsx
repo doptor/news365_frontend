@@ -145,7 +145,7 @@ const SinglePostMain = () => {
   return (
     <div>
       {items.slice(0, 1).map((itm, i) => (
-        <SingleNewsDetails key={i} data={itm} clss="mt-[60px]" />
+        <SingleNewsDetails key={i} data={itm} clss="mt-[15px]" />
       ))}
 
       {items.slice(1).map((itm, i) => (
