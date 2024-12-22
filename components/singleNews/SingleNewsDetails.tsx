@@ -149,7 +149,7 @@ const SingleNewsDetails = ({
 
       <div className="container px-4 mx-auto print:px-0">
 
-      <div className={`${data.ads.news_view_31 ? "" : "h-[250px]"} mb-4`}>
+      <div className={`${data.ads.news_view_31 ? "mb-4" : ""}`}>
                 <AddCard imgPath={data.ads.news_view_31} />
               </div>
 
@@ -169,8 +169,8 @@ const SingleNewsDetails = ({
                     </li>
                   </ol>
                 </nav>
-                <h2 style={{"font-size": "1.2em"}} className="my-1">{stitle}</h2>
-                <h1 style={{"font-weight": "bold"}} className="text-[var(--dark)] text-3xl lg:text-4xl leading-[40px] lg:leading-[50px] mb-6 dark:text-white print:dark:text-[var(--dark)] print:text-2xl print:mb-2">
+                <h2 style={{fontSize: "1.2em"}} className="my-1">{stitle}</h2>
+                <h1 style={{fontWeight: "bold"}} className="text-[var(--dark)] text-3xl lg:text-4xl leading-[40px] lg:leading-[50px] mb-6 dark:text-white print:dark:text-[var(--dark)] print:text-2xl print:mb-2">
                   {title}
                 </h1>
                 <div className="flex flex-col md:flex-row gap-3 items-center justify-between relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:right-0 after:-top-3 dark:after:bg-[var(--border-dark)] print:after:bg-transparent">
