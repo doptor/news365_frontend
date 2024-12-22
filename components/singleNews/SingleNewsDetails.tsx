@@ -86,7 +86,7 @@ const SingleNewsDetails = ({
     } finally { }
   };
 
-  useEffect(() => get_comments(), [data.id]);
+  // useEffect(() => get_comments(), [data.id]);
 
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -283,7 +283,7 @@ const SingleNewsDetails = ({
 
             <div>
 
-              <div className="container mt-5">
+              <div className="container mt-5 comment-section" style={{display: "none"}}>
 
                 <div className="row justify-content-center">
                   <div className="comment-list-container">
