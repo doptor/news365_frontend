@@ -28,17 +28,17 @@ const TopTimeBar = () => {
 
 
         moment.locale('bn');
-        const location = "ঢাকা";
-        const timenow = moment().format('dddd, Do MMMM YYYY');
+        const location = "";
+        const timenow = moment().format('dddd, Do MMMM YYYY | a h:mm মিনিট');
         const last_updated = "আপডেট ১ ঘন্টা আগে";
 
 
         return (
             <div style={{ background: "#a00303", color: "white" }}>
-                <div className="container px-4 py-4 mx-auto flex justify-between">
+                <div className="container px-4 py-2 mx-auto flex justify-between">
                     <span className="topdate">{location + ' ' + timenow} </span>
 
-                    <div className="mb-3 flex gap-3 justify-center text-white">
+                    <div className="mb-1 flex gap-3 justify-center text-white">
                         <Socials socialMediaLinks={social_link} />
                     </div>
                 </div>
