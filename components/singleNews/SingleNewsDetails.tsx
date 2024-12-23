@@ -55,7 +55,8 @@ interface SingleNews {
   tags: Tag[];
   relatedPost: NewsArticle[];
   ads?: any;
-  image_title?: string
+  image_title?: string,
+  is_on_print_media?: number
 }
 
 const SingleNewsDetails = ({
@@ -131,6 +132,7 @@ const SingleNewsDetails = ({
     time_stamp,
     tags,
     relatedPost,
+    is_on_print_media
   } = data;
 
   // split news with <p/>
@@ -186,7 +188,7 @@ const SingleNewsDetails = ({
                         src={reporter_image}
                       />
                       <div className="flex flex-col">
-                        <div>{reporter}</div>
+                        <div><span>{reporter}</span><span className="ml-1">|</span><span className="ml-1">{is_on_print_media === 1? "প্রিন্ট সংস্করণ" : "অনলাইন সংস্করণ"}</span></div>
                         <div>{timestampToEnglishDateWithTime(time_stamp)}</div>
                       </div>
                     </div>
