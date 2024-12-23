@@ -271,7 +271,7 @@ const SingleNewsDetails = ({
 
                   <div className="my-3 flex flex-col">
                     <div
-                      className="[&>p]:mt-5"
+                      className="[&>p]:mt-5 news_details"
                       dangerouslySetInnerHTML={{ __html: news }}
                     />
                   </div>

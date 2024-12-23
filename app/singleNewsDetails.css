@@ -12,4 +12,11 @@ blockquote {
     /* Adjust color and width as needed */
     padding-left: 15px;
     margin-left: 20px;
+    font-style: italic;
+    font-size: 0.9em;
+    line-height: 1.5em;
+}
+
+.news_details a {
+    color: rgb(160, 3, 3);
 }
