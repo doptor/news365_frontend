@@ -21,6 +21,7 @@ import VideoEmbed from "@/components/VideoEmbed";
 
 import "@/app/singleNewsDetails.css";
 import "@/app/commentlist.css";
+import date_output_bn from "@/utils/datetime";
 
 interface Comment {
   comments: string;
@@ -51,6 +52,8 @@ interface SingleNews {
   reporter: string;
   reporter_image: string;
   post_date: string;
+  publish_date: string;
+  datetime_format: string;
   time_stamp: number;
   tags: Tag[];
   relatedPost: NewsArticle[];
@@ -127,6 +130,7 @@ const SingleNewsDetails = ({
     reporter,
     reporter_image,
     post_date,
+    publish_date,
     category_name,
     category,
     time_stamp,
@@ -189,7 +193,8 @@ const SingleNewsDetails = ({
                       />
                       <div className="flex flex-col">
                         <div><span>{reporter}</span><span className="ml-1">|</span><span className="ml-1">{is_on_print_media === 1? "প্রিন্ট সংস্করণ" : "অনলাইন সংস্করণ"}</span></div>
-                        <div>{timestampToEnglishDateWithTime(time_stamp)}</div>
+                        {/* <div>{timestampToEnglishDateWithTime(time_stamp)}</div> */}
+                        <div>{date_output_bn(publish_date)}</div>
                       </div>
                     </div>
                   </div>
