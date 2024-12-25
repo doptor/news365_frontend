@@ -36,7 +36,7 @@
 .marquee {
   white-space: nowrap;
   display: inline-block;
-  animation: marquee 40s linear infinite; /* Animation for scrolling */
+  animation: marquee 60s linear infinite; /* Animation for scrolling */
 }
 
 @keyframes marquee {
