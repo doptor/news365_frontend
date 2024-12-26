@@ -55,7 +55,7 @@ const HomeMain = () => {
       )}
       {/* news By position 1 */}
       {data?.newsByCategory[0] && (
-        <NewsWithLatest data={data?.newsByCategory[0]} />
+        <NewsWithLatest data={data?.newsByCategory[0]} title={"সর্বশেষ"} />
       )}
       {/* news By position 2 */}
       {/* home ads 14 here */}
@@ -85,7 +85,7 @@ const HomeMain = () => {
       {data?.newsByCategory[5] && (
         <NewsWithLatest
           data={data?.newsByCategory[5]}
-          title="Most Read"
+          title="সর্বাধিক পঠিত"
           latest-post
           end_point="/populer-post"
         />

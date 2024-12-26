@@ -363,7 +363,7 @@ const SingleNewsDetails = ({
             <div className="container mx-auto print:hidden">
               <div className="relative mt-6 mb-6 before:absolute before:bg-[var(--border-color)] before:w-full before:h-[1px] before:left-0 before:-top-3 after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:left-0 after:-bottom-2 print:hidden dark:before:bg-[var(--border-color)] dark:after:bg-[var(--border-dark)]">
                 <p className="text-[var(--primary)] text-xl md:text-2xl dark:text-white">
-                  Related News
+                  এই বিভাগের আরও সংবাদ
                 </p>
               </div>
 
@@ -422,7 +422,7 @@ const SingleNewsDetails = ({
               <div className="mb-3">
                 <div className="mt-3 mb-3 border-[var(--border-color)] border-t-[1px] border-b-[1px] dark:border-[var(--border-dark)]">
                   <h4 className="text-[var(--primary)] text-xl md:text-2xl py-2 dark:text-[var(--primary)]">
-                    See more
+                    এ সম্পর্কিত আরও খবর
                   </h4>
                 </div>
                 <div className="last:[&>*]:mb-0 after:last:[&>*]:h-0">
