@@ -22,6 +22,8 @@ import VideoEmbed from "@/components/VideoEmbed";
 import "@/app/singleNewsDetails.css";
 import "@/app/commentlist.css";
 import date_output_bn from "@/utils/datetime";
+import NewsWithLatest from "../home/newsWithLatest/NewsWithLatest";
+import TopNews from "./TopNews";
 
 interface Comment {
   comments: string;
@@ -155,9 +157,9 @@ const SingleNewsDetails = ({
 
       <div className="container px-4 mx-auto print:px-0">
 
-      <div className={`${data.ads.news_view_31 ? "mb-4" : ""}`}>
-                <AddCard imgPath={data.ads.news_view_31} />
-              </div>
+        <div className={`${data.ads.news_view_31 ? "mb-4" : ""}`}>
+          <AddCard imgPath={data.ads.news_view_31} />
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 print:!block">
           <div className="col-span-12 lg:col-span-8 xl:col-span-9 relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:right-0 after:-bottom-3 lg:after:top-0 lg:after:-right-3 lg:after:w-[1px] lg:after:h-full dark:after:bg-[var(--border-dark)] print:!col-span-12 print:after:bg-transparent">
@@ -175,8 +177,8 @@ const SingleNewsDetails = ({
                     </li>
                   </ol>
                 </nav>
-                <h2 style={{fontSize: "1.2em"}} className="my-1">{stitle}</h2>
-                <h1 style={{fontWeight: "bold"}} className="text-[var(--dark)] text-3xl lg:text-4xl leading-[40px] lg:leading-[50px] mb-6 dark:text-white print:dark:text-[var(--dark)] print:text-2xl print:mb-2">
+                <h2 style={{ fontSize: "1.2em" }} className="my-1">{stitle}</h2>
+                <h1 style={{ fontWeight: "bold" }} className="text-[var(--dark)] text-3xl lg:text-4xl leading-[40px] lg:leading-[50px] mb-6 dark:text-white print:dark:text-[var(--dark)] print:text-2xl print:mb-2">
                   {title}
                 </h1>
                 <div className="flex flex-col md:flex-row gap-3 items-center justify-between relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:right-0 after:-top-3 dark:after:bg-[var(--border-dark)] print:after:bg-transparent">
@@ -192,7 +194,7 @@ const SingleNewsDetails = ({
                         src={reporter_image}
                       />
                       <div className="flex flex-col">
-                        <div><span>{reporter}</span><span className="ml-1">|</span><span className="ml-1">{is_on_print_media === 1? "প্রিন্ট সংস্করণ" : "অনলাইন সংস্করণ"}</span></div>
+                        <div><span>{reporter}</span><span className="ml-1">|</span><span className="ml-1">{is_on_print_media === 1 ? "প্রিন্ট সংস্করণ" : "অনলাইন সংস্করণ"}</span></div>
                         {/* <div>{timestampToEnglishDateWithTime(time_stamp)}</div> */}
                         <div>{date_output_bn(publish_date)}</div>
                       </div>
@@ -272,7 +274,7 @@ const SingleNewsDetails = ({
               </div>
               <div className="text-[var(--dark)] mt-3 text-xl leading-8 print:leading-7 dark:text-white break-words print:dark:text-[var(--dark)] print:text-base">
                 <div>
-                  <strong style={{display: "none"}}>{stitle}</strong>
+                  <strong style={{ display: "none" }}>{stitle}</strong>
 
                   <div className="my-3 flex flex-col">
                     <div
@@ -301,7 +303,7 @@ const SingleNewsDetails = ({
 
             <div>
 
-              <div className="container mt-5 comment-section" style={{display: "none"}}>
+              <div className="container mt-5 comment-section" style={{ display: "none" }}>
 
                 <div className="row justify-content-center">
                   <div className="comment-list-container">
@@ -418,6 +420,8 @@ const SingleNewsDetails = ({
               {/* <div className={`${data.ads.news_view_31 ? "" : "h-[250px]"}`}>
                 <AddCard imgPath={data.ads.news_view_31} />
               </div> */}
+
+              <TopNews/>
 
               <div className="mb-3">
                 <div className="mt-3 mb-3 border-[var(--border-color)] border-t-[1px] border-b-[1px] dark:border-[var(--border-dark)]">

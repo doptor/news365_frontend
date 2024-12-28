@@ -9,6 +9,8 @@ import notFoundImg from "@/public/images/not-found.png";
 import PostDetailsSkeleton from "@/components/skeleton/PostDetailsSkeleton";
 
 import { Fragment, useEffect, useState } from "react";
+import useSWR from "swr";
+import fetcher from "@/utils/fetcher";
 
 const SinglePostMain = () => {
   const [items, setItems] = useState<any[]>([]);
