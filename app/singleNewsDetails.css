@@ -23,7 +23,7 @@ blockquote {
 
 /* tabbed nav wo bootstrap */
 
-.tab-container {
+.widget-tab-container {
     max-width: 600px;
     width: 100%;
     position: relative;
@@ -68,8 +68,7 @@ blockquote {
     top: -1px;
 }
 
-#tab1:checked~#panel1,
-#tab2:checked~#panel2,
-#tab3:checked~#panel3 {
+/* .tab1:checked~.panel1,
+.tab2:checked~.panel2 {
     display: block;
-}
+} */

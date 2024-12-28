@@ -85,24 +85,24 @@ function TopNews() {
         return <div></div>;
     }
 
-    return <div className="tab-container">
-        <input type="radio" id="tab1" name="tab" className="tab-input" checked={tab1Active} onChange={() => {
+    return <div className="widget-tab-container">
+        <input type="radio" name="tab" className="tab-input tab1" checked={tab1Active} onChange={() => {
             setTab1Active(true);
             setTab2Active(false);
         }} />
         <label htmlFor="tab1" className="tab-label">সর্বাধিক পঠিত</label>
 
-        <input type="radio" id="tab2" name="tab" className="tab-input" checked={tab2Active} onChange={() => {
+        <input type="radio" name="tab" className="tab-input tab2" checked={tab2Active} onChange={() => {
             setTab1Active(false);
             setTab2Active(true);
         }} />
         <label htmlFor="tab2" className="tab-label">সর্বশেষ</label>
 
-        <div className="tab-panel" id="panel1">
-            <NewsList posts={popularData.data.slice(0,10)} />
+        <div className="tab-panel" style={{ display: tab1Active ? "block" : "none" }}>
+            <NewsList posts={popularData.data.slice(0, 10)} />
         </div>
-        <div className="tab-panel" id="panel2">
-        <NewsList posts={latestData.data.slice(0,10)} />
+        <div className="tab-panel" style={{ display: tab2Active ? "block" : "none" }}>
+            <NewsList posts={latestData.data.slice(0, 10)} />
         </div>
     </div>;
 }
