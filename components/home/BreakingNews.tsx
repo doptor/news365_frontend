@@ -15,8 +15,14 @@ const BreakingNews = () => {
         fetcher
     );
 
+    let marquee_dur = 90;
+
     if (error) return <div>Error loading data</div>;
-    if (isLoading) return <div></div>;
+    if (isLoading) {
+        return <div></div>;
+    } else {
+        marquee_dur = data.length * 3;
+    }
 
     return (
         <section>
@@ -28,7 +34,7 @@ const BreakingNews = () => {
                                 <span>শিরোনাম</span>
                             </div>
                             <div className="marquee-wrapper mx-3">
-                                <div className="marquee">
+                                <div className="marquee" style={{animation: "marquee " + marquee_dur.toString() + "s linear infinite"}}>
                                     {data.map((entry: any) => {
                                         return <a className="mx-6" key={entry.news_title} href={"javascript:void(0)"}>{entry.news_title}</a>
                                     })}
