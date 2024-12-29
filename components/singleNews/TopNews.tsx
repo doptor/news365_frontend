@@ -14,7 +14,7 @@ interface NewsProps {
     news_id: number;
     post_title: string;
     image_thumb: string;
-    image_alt: string
+    image_alt: string;
     category: string;
     encode_titl: string;
 }
@@ -70,7 +70,6 @@ function NewsList({ posts }: { posts: NewsProps[] }) {
 function TopNews() {
 
     const [tab1Active, setTab1Active] = useState(true);
-    const [tab2Active, setTab2Active] = useState(false);
 
     const popularData = useSWR(
         "/populer-post",
@@ -86,23 +85,30 @@ function TopNews() {
     }
 
     return <div className="widget-tab-container">
-        <input type="radio" name="tab" className="tab-input tab1" checked={tab1Active} onChange={() => {
+        <div className="inline-block" onClick={() => {
             setTab1Active(true);
-            setTab2Active(false);
-        }} />
-        <label htmlFor="tab1" className="tab-label">সর্বাধিক পঠিত</label>
+        }}>
+            <input type="radio" name="tab" className="tab-input " checked={tab1Active} onChange={() => {
+                setTab1Active(true);
+            }} />
+            <label className="tab-label">সর্বশেষ</label>
+        </div>
 
-        <input type="radio" name="tab" className="tab-input tab2" checked={tab2Active} onChange={() => {
+        <div className="inline-block" onClick={() => {
             setTab1Active(false);
-            setTab2Active(true);
-        }} />
-        <label htmlFor="tab2" className="tab-label">সর্বশেষ</label>
+        }}>
+            <input type="radio" name="tab" className="tab-input " checked={!tab1Active} onChange={() => {
+                setTab1Active(false);
+                console.log(tab1Active);
+            }} />
+            <label className="tab-label">সর্বাধিক পঠিত</label>
+        </div>
 
         <div className="tab-panel" style={{ display: tab1Active ? "block" : "none" }}>
-            <NewsList posts={popularData.data.slice(0, 10)} />
-        </div>
-        <div className="tab-panel" style={{ display: tab2Active ? "block" : "none" }}>
             <NewsList posts={latestData.data.slice(0, 10)} />
+        </div>
+        <div className="tab-panel" style={{ display: tab1Active ? "none" : "block" }}>
+            <NewsList posts={popularData.data.slice(0, 10)} />
         </div>
     </div>;
 }
