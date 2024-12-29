@@ -84,7 +84,7 @@ function TopNews() {
         return <div></div>;
     }
 
-    return <div className="widget-tab-container">
+    return <div className="widget-tab-container md:block hidden">
         <div className="inline-block" onClick={() => {
             setTab1Active(true);
         }}>
