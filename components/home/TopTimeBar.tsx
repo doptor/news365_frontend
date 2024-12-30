@@ -38,7 +38,7 @@ const TopTimeBar = () => {
                 <div className="container px-4 py-2 mx-auto flex justify-between">
                     <span className="topdate">{location + ' ' + timenow} </span>
 
-                    <div className="mb-1 flex gap-3 justify-center text-white">
+                    <div className="mb-1 flex gap-3 justify-center text-white md:flex hidden">
                         <Socials socialMediaLinks={social_link} />
                     </div>
                 </div>
