@@ -421,7 +421,7 @@ const SingleNewsDetails = ({
                 <AddCard imgPath={data.ads.news_view_31} />
               </div> */}
 
-              <TopNews/>
+              <TopNews count={10}/>
 
               <div className="mb-3">
                 <div className="mt-3 mb-3 border-[var(--border-color)] border-t-[1px] border-b-[1px] dark:border-[var(--border-dark)]">

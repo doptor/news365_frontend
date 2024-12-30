@@ -67,7 +67,7 @@ function NewsList({ posts }: { posts: NewsProps[] }) {
     </div>;
 }
 
-function TopNews() {
+function TopNews({count}: {count: number}) {
 
     const [tab1Active, setTab1Active] = useState(true);
 
@@ -105,10 +105,10 @@ function TopNews() {
         </div>
 
         <div className="tab-panel" style={{ display: tab1Active ? "block" : "none" }}>
-            <NewsList posts={latestData.data.slice(0, 10)} />
+            <NewsList posts={latestData.data.slice(0, count)} />
         </div>
         <div className="tab-panel" style={{ display: tab1Active ? "none" : "block" }}>
-            <NewsList posts={popularData.data.slice(0, 10)} />
+            <NewsList posts={popularData.data.slice(0, count)} />
         </div>
     </div>;
 }
