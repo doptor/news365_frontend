@@ -17,6 +17,7 @@ import useSWR from "swr";
 import notFoundImg from "@/public/images/not-found.png";
 import CategoryPageSkeleton from "@/components/skeleton/CategoryPageSkeleton";
 import { useTheme } from "next-themes";
+import TopNews from "../singleNews/TopNews";
 
 interface TopicType {
   topic_name: string;
@@ -294,8 +295,9 @@ const CategoryMain = () => {
           </div>
 
           <div className="col-span-12 lg:col-span-4 xl:col-span-3 relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:-bottom-3 after:right-0 after:last:h-0 lg:after:w-[1px] lg:after:h-full lg:after:-right-3 lg:after:top-0 lg:after:last:w-0 dark:after:bg-[var(--border-dark)]">
-            <div className="-mt-3">
-              <div>
+            <TopNews count={10} />
+            <div className="-mt-3 hidden">
+              <div >
                 <div className="mt-3 mb-3 border-[var(--border-color)] border-t-2 border-b-[2px] dark:border-[var(--border-dark)]">
                   <h4 className="text-[var(--primary)] text-xl md:text-2xl dark:text-white">
                     Latest news
