@@ -114,8 +114,7 @@ const NavBar = () => {
             <div className="flex items-center justify-center print:hidden">
               <div className="p-3 last:pr-0 hidden md:block">
                 <button
-                  style={{display: 'none'}}
-                  className="flex"
+                  className="flex hidden"
                   aria-label="theme"
                   onClick={handleTheme}
                 >
