@@ -41,11 +41,11 @@ const TopTimeBar = () => {
         return (
             <div style={{ background: "#a00303", color: "white" }} className="timebar">
                 <div className="container px-4 py-2 mx-auto flex justify-between">
-                    <div className="flex">
+                    <div className="block sm:flex items-center">
                         <span className="topdate">{location + ' ' + timenow} </span>
                     </div>
 
-                    <div className="flex flex-wrap items-center justify-center">
+                    <div className="hidden sm:flex flex-wrap items-center justify-center ">
                         <ul className="flex gap-2 whitespace-nowrap">
                             {topLinks.map((item) => {
                                 const { label, href } = item;
@@ -60,7 +60,7 @@ const TopTimeBar = () => {
                         </ul>
                     </div>
 
-                    <div className="mb-1 flex gap-3 justify-center text-white md:flex hidden">
+                    <div className="hidden md:flex mb-1 gap-3 items-center justify-center text-white ">
                         <Socials socialMediaLinks={social_link} />
                     </div>
                 </div>
