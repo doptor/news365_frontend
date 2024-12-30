@@ -37,7 +37,7 @@ const TopTimeBar = () => {
         const { social_link } = webSettingData;
         const topLinks: any[] = [
             { label: "আজকের পত্রিকা", href: "javascript:void(0)" },
-            { label: "ই পেপার", href: "https://epaper2.doptor.net/" },
+            { label: "ই পেপার", href: "https://epaper.dailyniropekkho.com/" },
             { label: "আর্কাইভ", href: "javascript:void(0)" },
             { label: "সোশ্যাল মিডিয়া", href: "javascript:void(0)" },
         ];
