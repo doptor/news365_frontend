@@ -67,7 +67,7 @@ function NewsList({ posts }: { posts: NewsProps[] }) {
     </div>;
 }
 
-function TopNews({count}: {count: number}) {
+function TopNews({count=10}: {count: number}) {
 
     const [tab1Active, setTab1Active] = useState(true);
 
