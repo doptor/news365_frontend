@@ -37,6 +37,7 @@ html {
 }
 
 @layer base {
+
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
     -webkit-appearance: none;
@@ -70,9 +71,12 @@ html {
 }
 
 .sidebar-scrollbar-none {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
+
 /* =======  End of Scroll Bar  ======= */
 
 /**================================================== *
@@ -81,9 +85,11 @@ html {
 .archive-date-picker .react-datepicker-wrapper {
   display: inline !important;
 }
+
 .archive-date-picker .react-datepicker__close-icon {
   right: 5px;
 }
+
 .archive-date-picker .react-datepicker__close-icon::after {
   background-color: transparent;
   color: var(--gray);
@@ -107,6 +113,7 @@ html {
     transform: rotate(360deg);
   }
 }
+
 /* =======  End of Spin  ======= */
 
 /**================================================== *
@@ -138,6 +145,7 @@ html {
   bottom: 30px;
   transform: translateY(0%);
 }
+
 /* .news_view img {
   width: 100%;
   max-height: 250px;
@@ -147,6 +155,10 @@ html {
 
 a :hover {
   color: rgb(160, 3, 3);
+}
+
+.timebar a :hover {
+  color: inherit;
 }
 
 
