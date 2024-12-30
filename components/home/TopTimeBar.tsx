@@ -1,7 +1,7 @@
 "use client";
 
 import { WebSettingContext } from "@/context/webSettingContext";
-import { useContext } from "react";
+import { useContext, useEffect, useState } from "react";
 import "moment/locale/bn";
 
 import moment from "moment";
@@ -11,6 +11,15 @@ import "@/app/datebar.css";
 import Link from "next/link";
 
 const TopTimeBar = () => {
+    const format = 'dddd, Do MMMM YYYY | a h:mm মিনিট';
+
+    const [timenow, setTimeNow] = useState(moment().format(format));
+    
+    useEffect(() => {
+        const intervalId = setInterval(() => setTimeNow(moment().format(format)), 1000*60);
+        return () => clearInterval(intervalId);
+    }, []);
+
     const {
         data: webSettingData,
         error: webSettingError,
@@ -35,8 +44,7 @@ const TopTimeBar = () => {
 
         moment.locale('bn');
         const location = "";
-        const timenow = moment().format('dddd, Do MMMM YYYY | a h:mm মিনিট');
-        const last_updated = "আপডেট ১ ঘন্টা আগে";
+        // const timenow = moment().format('dddd, Do MMMM YYYY | a h:mm মিনিট');
 
         return (
             <div style={{ background: "#a00303", color: "white" }} className="timebar">
