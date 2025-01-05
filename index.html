@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Under Construction</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+            /* Light gray background */
+            color: #333;
+            /* Dark gray text */
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #555;
+            /* Slightly lighter gray for the heading */
+        }
+
+        p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
+
+        .icon {
+            font-size: 4em;
+            color: #007bff;
+            /* Blue icon */
+            margin-bottom: 20px;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .clock-container {
+            display: flex;
+            gap: 20px;
+        }
+
+        .clock-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .clock-number {
+            font-size: 2em;
+            font-weight: bold;
+        }
+
+        .clock-label {
+            font-size: 0.8em;
+            color: #777;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="icon">&#128679;</div>
+        <h1>Under Construction</h1>
+        <p>We're currently working on improving our website. We'll be back soon!</p>
+        <div class="clock-container" id="clock">
+            <div class="clock-item">
+                <span class="clock-number" id="days">00</span>
+                <span class="clock-label">Days</span>
+            </div>
+            <div class="clock-item">
+                <span class="clock-number" id="hours">00</span>
+                <span class="clock-label">Hours</span>
+            </div>
+            <div class="clock-item">
+                <span class="clock-number" id="minutes">00</span>
+                <span class="clock-label">Minutes</span>
+            </div>
+            <div class="clock-item">
+                <span class="clock-number" id="seconds">00</span>
+                <span class="clock-label">Seconds</span>
+            </div>
+        </div>
+        <p>In the meantime, you can <a href="#">contact us</a>.</p>
+
+    </div>
+    <script>
+        // const targetDate = new Date("2024-12-31T00:00:00").getTime(); // Set your target date
+
+        const updateCountdown = () => {
+            const now = new Date().getTime();
+            const targetDate = new Date(now + (60 * 60 * 1000)); // Set your target date
+            const distance = targetDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = String(days).padStart(2, '0');
+            document.getElementById("hours").innerText = String(hours).padStart(2, '0');
+            document.getElementById("minutes").innerText = String(minutes).padStart(2, '0');
+            document.getElementById("seconds").innerText = String(seconds).padStart(2, '0');
+
+            if (distance < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById("clock").innerHTML = "<p>We are back!</p>";
+            }
+        };
+
+        updateCountdown(); // Call it once initially
+        const countdownInterval = setInterval(updateCountdown, 1000); // Update every second
+
+    </script>
+</body>
+
+</html>
