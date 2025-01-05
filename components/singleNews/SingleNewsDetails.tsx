@@ -19,7 +19,11 @@ import instance from "@/utils/instance";
 
 import VideoEmbed from "@/components/VideoEmbed";
 
+import "@/app/singleNewsDetails.css";
 import "@/app/commentlist.css";
+import date_output_bn from "@/utils/datetime";
+import NewsWithLatest from "../home/newsWithLatest/NewsWithLatest";
+import TopNews from "./TopNews";
 
 interface Comment {
   comments: string;
@@ -50,10 +54,14 @@ interface SingleNews {
   reporter: string;
   reporter_image: string;
   post_date: string;
+  publish_date: string;
+  datetime_format: string;
   time_stamp: number;
   tags: Tag[];
   relatedPost: NewsArticle[];
   ads?: any;
+  image_title?: string,
+  is_on_print_media?: number
 }
 
 const SingleNewsDetails = ({
@@ -86,7 +94,7 @@ const SingleNewsDetails = ({
     } finally { }
   };
 
-  useEffect(() => get_comments(), [data.id]);
+  // useEffect(() => get_comments(), [data.id]);
 
   const handleCommentSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -117,17 +125,20 @@ const SingleNewsDetails = ({
     encode_title,
     image_thumb,
     image_large,
+    image_title,
     slug,
     news,
     video,
     reporter,
     reporter_image,
     post_date,
+    publish_date,
     category_name,
     category,
     time_stamp,
     tags,
     relatedPost,
+    is_on_print_media
   } = data;
 
   // split news with <p/>
@@ -143,7 +154,13 @@ const SingleNewsDetails = ({
 
   return (
     <div className={clss}>
+
       <div className="container px-4 mx-auto print:px-0">
+
+        <div className={`${data.ads.news_view_31 ? "mb-4" : ""}`}>
+          <AddCard imgPath={data.ads.news_view_31} />
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-12 gap-6 print:!block">
           <div className="col-span-12 lg:col-span-8 xl:col-span-9 relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:right-0 after:-bottom-3 lg:after:top-0 lg:after:-right-3 lg:after:w-[1px] lg:after:h-full dark:after:bg-[var(--border-dark)] print:!col-span-12 print:after:bg-transparent">
             <article>
@@ -160,7 +177,8 @@ const SingleNewsDetails = ({
                     </li>
                   </ol>
                 </nav>
-                <h1 className="text-[var(--dark)] text-3xl lg:text-4xl leading-[40px] lg:leading-[50px] mb-6 dark:text-white print:dark:text-[var(--dark)] print:text-2xl print:mb-2">
+                <h2 style={{ fontSize: "1.2em" }} className="my-1">{stitle}</h2>
+                <h1 style={{ fontWeight: "bold" }} className="text-[var(--dark)] text-3xl lg:text-4xl leading-[40px] lg:leading-[50px] mb-6 dark:text-white print:dark:text-[var(--dark)] print:text-2xl print:mb-2">
                   {title}
                 </h1>
                 <div className="flex flex-col md:flex-row gap-3 items-center justify-between relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:right-0 after:-top-3 dark:after:bg-[var(--border-dark)] print:after:bg-transparent">
@@ -176,8 +194,9 @@ const SingleNewsDetails = ({
                         src={reporter_image}
                       />
                       <div className="flex flex-col">
-                        <div>{reporter}</div>
-                        <div>{timestampToEnglishDateWithTime(time_stamp)}</div>
+                        <div><span>{reporter}</span><span className="ml-1">|</span><span className="ml-1">{is_on_print_media === 1 ? "প্রিন্ট সংস্করণ" : "অনলাইন সংস্করণ"}</span></div>
+                        {/* <div>{timestampToEnglishDateWithTime(time_stamp)}</div> */}
+                        <div>{date_output_bn(publish_date)}</div>
                       </div>
                     </div>
                   </div>
@@ -246,19 +265,20 @@ const SingleNewsDetails = ({
                       width={1200}
                       height={675}
                       decoding="async"
-                      className="w-full h-auto mb-1"
+                      className="w-full h-auto"
                       src={image_large}
                     />
+                    <div className="text-center post_image_title bg_lite border_bottom py-1 mb-1">{image_title}</div>
                   </figure>
                 )}
               </div>
               <div className="text-[var(--dark)] mt-3 text-xl leading-8 print:leading-7 dark:text-white break-words print:dark:text-[var(--dark)] print:text-base">
                 <div>
-                  <strong>{stitle}</strong>
+                  <strong style={{ display: "none" }}>{stitle}</strong>
 
                   <div className="my-3 flex flex-col">
                     <div
-                      className="[&>p]:mt-5"
+                      className="[&>p]:mt-5 news_details"
                       dangerouslySetInnerHTML={{ __html: news }}
                     />
                   </div>
@@ -283,7 +303,7 @@ const SingleNewsDetails = ({
 
             <div>
 
-              <div className="container mt-5">
+              <div className="container mt-5 comment-section" style={{ display: "none" }}>
 
                 <div className="row justify-content-center">
                   <div className="comment-list-container">
@@ -345,7 +365,7 @@ const SingleNewsDetails = ({
             <div className="container mx-auto print:hidden">
               <div className="relative mt-6 mb-6 before:absolute before:bg-[var(--border-color)] before:w-full before:h-[1px] before:left-0 before:-top-3 after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:left-0 after:-bottom-2 print:hidden dark:before:bg-[var(--border-color)] dark:after:bg-[var(--border-dark)]">
                 <p className="text-[var(--primary)] text-xl md:text-2xl dark:text-white">
-                  Related News
+                  এই বিভাগের আরও সংবাদ
                 </p>
               </div>
 
@@ -397,14 +417,16 @@ const SingleNewsDetails = ({
 
           <div className="col-span-12 lg:col-span-4 xl:col-span-3 print:hidden">
             <div className="xl:sticky xl:top-[4rem]">
-              <div className={`${data.ads.news_view_31 ? "" : "h-[250px]"}`}>
+              {/* <div className={`${data.ads.news_view_31 ? "" : "h-[250px]"}`}>
                 <AddCard imgPath={data.ads.news_view_31} />
-              </div>
+              </div> */}
+
+              <TopNews count={10}/>
 
               <div className="mb-3">
                 <div className="mt-3 mb-3 border-[var(--border-color)] border-t-[1px] border-b-[1px] dark:border-[var(--border-dark)]">
                   <h4 className="text-[var(--primary)] text-xl md:text-2xl py-2 dark:text-[var(--primary)]">
-                    See more
+                    এ সম্পর্কিত আরও খবর
                   </h4>
                 </div>
                 <div className="last:[&>*]:mb-0 after:last:[&>*]:h-0">

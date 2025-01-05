@@ -57,9 +57,9 @@ const NavItems = ({
                   onClick={() => setActiveMenu(menu_lavel.toLowerCase())}
                 >
                   <div
-                    className={`${
+                    className={`font-bold ${
                       activeMenu == menu_lavel.toLocaleLowerCase()
-                        ? "font-bold border-b-2 border-black dark:border-white"
+                        ? " border-b-2 border-black dark:border-white"
                         : ""
                     }`}
                   >

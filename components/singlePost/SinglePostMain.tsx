@@ -9,6 +9,8 @@ import notFoundImg from "@/public/images/not-found.png";
 import PostDetailsSkeleton from "@/components/skeleton/PostDetailsSkeleton";
 
 import { Fragment, useEffect, useState } from "react";
+import useSWR from "swr";
+import fetcher from "@/utils/fetcher";
 
 const SinglePostMain = () => {
   const [items, setItems] = useState<any[]>([]);
@@ -145,7 +147,7 @@ const SinglePostMain = () => {
   return (
     <div>
       {items.slice(0, 1).map((itm, i) => (
-        <SingleNewsDetails key={i} data={itm} clss="mt-[60px]" />
+        <SingleNewsDetails key={i} data={itm} clss="mt-[15px]" />
       ))}
 
       {items.slice(1).map((itm, i) => (

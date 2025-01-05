@@ -18,7 +18,7 @@ const LatestNewsVertical = ({
   }: { data: any; error: any; isLoading: boolean } = useSWR(end_point, fetcher);
 
   if (error) return <div>Error loading data</div>;
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div></div>;
 
   return (
     <div className="flex flex-col last:[&>*]:mb-0 after:last:[&>*]:h-0">

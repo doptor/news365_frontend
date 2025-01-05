@@ -46,7 +46,7 @@ const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
   let content;
 
   if (error) content = <div>There was an Error!</div>;
-  if (isLoading) content = <div>Loading.....</div>;
+  if (isLoading) content = <div></div>;
   if (data)
     content = (
       <ul>
@@ -113,7 +113,7 @@ const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
         style={{ transition: "width 300ms cubic-bezier(0.2, 0, 0, 1) 0s" }}
       >
         <div className="flex justify-between md:justify-end items-center py-1 px-2">
-          <div className="p-3 last:pr-0 md:hidden">
+          <div className="p-3 last:pr-0 hidden">
             <button className="flex" aria-label="theme" onClick={handleTheme}>
               {theme === "light" ? (
                 <MoonIcon />

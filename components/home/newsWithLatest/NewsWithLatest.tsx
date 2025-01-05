@@ -1,4 +1,5 @@
 import LatestNewsVertical from "@/components/common/latestNews/LatestNewsVertical";
+import TopNews from "@/components/singleNews/TopNews";
 import { NewsItem } from "@/interface/post";
 import TimeBefore from "@/ui/TimeBefore";
 import Image from "next/image";
@@ -15,9 +16,10 @@ interface NewsProps {
   };
   end_point?: string;
   title?: string;
+  topnews: boolean;
 }
 
-const NewsWithLatest = ({ data, end_point, title }: NewsProps) => {
+const NewsWithLatest = ({ data, end_point, title, topnews }: NewsProps) => {
   const { category_id, category_name, position, post, slug, status } =
     data || {};
 
@@ -133,7 +135,7 @@ const NewsWithLatest = ({ data, end_point, title }: NewsProps) => {
           </div>
 
           <div className="col-span-12 lg:col-span-4 xl:col-span-3 relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:-bottom-3 after:right-0 after:last:h-0 lg:after:w-[1px] lg:after:h-full lg:after:-right-3 lg:after:top-0 lg:after:last:w-0 dark:after:bg-[var(--border-dark)]">
-            <div className="border-[var(--border-color)]  dark:border-[var(--border-dark)] border-b-[2px] mb-3 pb-1">
+            {/* <div className="border-[var(--border-color)]  dark:border-[var(--border-dark)] border-b-[2px] mb-3 pb-1">
               <div className="flex items-center justify-between">
                 <Link href="/latest-news">
                   <h2 className="category-text"> {title ?? "Latest news"}</h2>
@@ -141,8 +143,8 @@ const NewsWithLatest = ({ data, end_point, title }: NewsProps) => {
               </div>
             </div>
 
-            {/* latest new vertical  */}
-            <LatestNewsVertical end_point={end_point} />
+            <LatestNewsVertical end_point={end_point} /> */}
+            {topnews?<TopNews count={10} />:""}
           </div>
         </div>
       </div>

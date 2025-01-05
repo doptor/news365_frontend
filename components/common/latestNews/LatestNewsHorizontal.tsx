@@ -17,7 +17,7 @@ const LatestNewsHorizontal = () => {
   );
 
   if (error) return <div>Error loading data</div>;
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) return <div></div>;
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:after:[&>*:nth-last-child(-n+2)]:h-0 lg:after:[&>*:nth-last-child(-n+2)]:h-full lg:after:[&>*:nth-child(3)]:w-0 lg:after:[&>*]:w-[1px] after:[&>*:last-child]:w-0 after:[&>*]:h-[1px] lg:after:[&>*]:h-full print:hidden dark:after:[&>*]:bg-[var(--border-color)]">
