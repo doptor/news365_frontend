@@ -29,7 +29,7 @@ const CategoryMain = () => {
   const [pageNumber, setPageNumber] = useState(0);
   const [pageData, setPageData] = useState<any[]>([]);
   const [isPageDataLoading, setIsPageDataLoading] = useState(false);
-  const [limit, setLimit] = useState(15);
+  const [limit, setLimit] = useState(50);
 
   const param = useParams();
 
@@ -68,6 +68,8 @@ const CategoryMain = () => {
 
   //@TODO: When the loading
   if (isLoading) return <CategoryPageSkeleton />;
+
+  // console.log(data);
 
   //@TODO: When No data found
   if (!data?.posts?.length)
