@@ -1,7 +1,6 @@
 import Footer from "@/components/footer/Footer";
 import NavBar from "@/components/navBar/NavBar";
 import BreakingNews from "@/components/home/BreakingNews";
-import TopTimeBar from "@/components/home/TopTimeBar";
 import ScrollToTop from "@/components/scrollToTop/ScrollToTop";
 import ThemeWrapper from "@/components/themeWrapper/ThemeWrapper";
 import WebSettingProvider from "@/context/webSettingContext";
@@ -18,6 +17,7 @@ import "slick-carousel/slick/slick.css";
 //global css
 import "./globals.css";
 import DynamicFavicon from "@/components/dynamicFavicon/DynamicFavicon";
+import TopBar from "@/components/home/TopBar";
 
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await instance.get("/metadata");
@@ -71,7 +71,7 @@ export default function RootLayout({
         <ThemeWrapper>
           <WebSettingProvider>
 
-            <TopTimeBar />
+            <TopBar />
 
             <NavBar />
 

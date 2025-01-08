@@ -43,8 +43,8 @@ const NavItems = ({
   return (
     <nav className="flex-nowrap overflow-x-auto lg:flex-wrap hidden lg:block">
       <div className="flex flex-wrap items-center lg:justify-center">
-        <ul className="flex gap-2 whitespace-nowrap lg:overflow-hidden">
-          {data?.slice(0, 8)?.map((category: MenuContent) => {
+        <ul className="flex gap-6 whitespace-nowrap lg:overflow-hidden">
+          {data?.slice(0, 10)?.map((category: MenuContent) => {
             const { menu_content_id, slug, menu_lavel } = category;
             return (
               <li
@@ -52,7 +52,7 @@ const NavItems = ({
                 className="text-black  dark:text-white "
               >
                 <Link
-                  className="flex items-center gap-1 py-[11px] px-3 text-lg text-[var(--dark)] dark:text-white hover:font-bold  capitalize"
+                  className="flex items-center gap-1 py-[11px] px-3 text-md text-[var(--dark)] dark:text-white hover:font-bold capitalize"
                   href={`/${slug?.toLowerCase()}`}
                   onClick={() => setActiveMenu(menu_lavel.toLowerCase())}
                 >

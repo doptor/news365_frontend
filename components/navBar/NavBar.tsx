@@ -85,9 +85,10 @@ const NavBar = () => {
   return (
     <Fragment>
       <header className="sticky top-0 z-50 bg-[var(--bg)] dark:bg-[#191c20] shadow-[0px_1px_2px_rgba(0,0,0,0.2)]">
-        <div className="container px-4 py-2.5 mx-auto">
+        <div className="container px-4 py-0 mx-auto">
           <div className="flex items-center justify-between">
-            <div className="">
+
+            {/* <div className="">
               {!isLoading ? (
                 <Link
                   href="/"
@@ -103,7 +104,7 @@ const NavBar = () => {
               ) : (
                 ""
               )}
-            </div>
+            </div> */}
 
             {/* Nav item here */}
             <NavItems
@@ -131,14 +132,14 @@ const NavBar = () => {
               </div>
 
               <button
-                className="p-3 last:pr-0"
+                className="p-2 last:pr-0"
                 aria-label="search"
                 onClick={() => setShowSearch(!showSearch)}
               >
                 <SearchIcon clss="" />
               </button>
               <button
-                className="p-3 last:pr-0 "
+                className="p-2 last:pr-0 "
                 type="button"
                 aria-label="menu"
                 onClick={handleSidebar}
