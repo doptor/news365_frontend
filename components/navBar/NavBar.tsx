@@ -84,7 +84,7 @@ const NavBar = () => {
 
   return (
     <Fragment>
-      <header className="sticky top-0 z-50 bg-[var(--bg)] dark:bg-[#191c20] shadow-[0px_1px_2px_rgba(0,0,0,0.2)]">
+      <header className="sticky top-0 z-10 bg-[var(--bg)] dark:bg-[#191c20] shadow-[0px_1px_2px_rgba(0,0,0,0.2)]">
         <div className="container px-4 py-0 mx-auto">
           <div className="flex items-center justify-between">
 
