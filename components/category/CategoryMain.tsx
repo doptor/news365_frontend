@@ -69,7 +69,7 @@ const CategoryMain = () => {
   //@TODO: When the loading
   if (isLoading) return <CategoryPageSkeleton />;
 
-  // console.log(data);
+  console.log(data);
 
   //@TODO: When No data found
   if (!data?.posts?.length)
