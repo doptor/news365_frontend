@@ -121,6 +121,10 @@ const NewsOnlyTwo = ({data}: NewsProps) => {
                                             <h3 className="text-lg text-[var(--dark)]    dark:text-white   ">
                                                 {post_title}
                                             </h3>
+                                            <span
+                                                className="text-[var(--gray-2)] dark:text-[var(--gray-3)] mt-2 text-base line-clamp-2">
+                                                  {excerpt || stitle}
+                                            </span>
                                         </Link>
 
                                         <TimeBefore title={post_date}/>
@@ -171,6 +175,10 @@ const NewsOnlyTwo = ({data}: NewsProps) => {
                                             <h3 className="text-lg text-[var(--dark)]    dark:text-white   ">
                                                 {post_title}
                                             </h3>
+                                            <span
+                                                className="text-[var(--gray-2)] dark:text-[var(--gray-3)] mt-2 text-base line-clamp-2">
+                                                  {excerpt || stitle}
+                                            </span>
                                         </Link>
 
                                         <TimeBefore title={post_date}/>

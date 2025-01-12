@@ -121,6 +121,10 @@ const NewsOnly = ({data}: NewsProps) => {
                                             <h3 className="text-lg text-[var(--dark)]    dark:text-white    line-clamp-2">
                                                 {post_title}
                                             </h3>
+                                            <span
+                                                className="text-[var(--gray-2)] dark:text-[var(--gray-3)] mt-2 text-base line-clamp-2">
+                                                  {excerpt || stitle}
+                                            </span>
 
                                             <TimeBefore title={post_date} clss="mt-2.5 md:mt-10"/>
                                         </Link>
@@ -140,6 +144,8 @@ const NewsOnly = ({data}: NewsProps) => {
                                     category,
                                     encode_titl,
                                     post_date,
+                                    excerpt,
+                                    stitle,
                                 } = item || {};
 
                                 return (
@@ -167,6 +173,10 @@ const NewsOnly = ({data}: NewsProps) => {
                                             <h3 className="text-lg text-[var(--dark)]    dark:text-white    line-clamp-2">
                                                 {post_title}
                                             </h3>
+                                            <span
+                                                className="text-[var(--gray-2)] dark:text-[var(--gray-3)] mt-2 text-base line-clamp-2">
+                                                  {excerpt || stitle}
+                                            </span>
 
                                             <TimeBefore title={post_date} clss="mt-2.5 md:mt-10"/>
                                         </Link>

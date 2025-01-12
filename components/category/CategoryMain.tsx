@@ -211,6 +211,8 @@ const CategoryMain = () => {
                                     post_title,
                                     encode_titl,
                                     image_thumb,
+                                    excerpt,
+                                    stitle,
                                 } = itm;
                                 return (
                                     <div
@@ -236,6 +238,10 @@ const CategoryMain = () => {
                                             <h2 className="text-lg text-[var(--dark)]    dark:text-white    ">
                                                 {post_title}
                                             </h2>
+                                            <span
+                                                className="text-[var(--gray-2)] dark:text-[var(--gray-3)] mt-2 text-base line-clamp-2">
+                                                  {excerpt || stitle}
+                                            </span>
 
                                             <TimeBefore title={post_date}/>
                                         </Link>
