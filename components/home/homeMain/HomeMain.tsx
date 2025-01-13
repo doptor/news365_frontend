@@ -17,6 +17,7 @@ import NewsWithLatestTwo from "../newsWithLatestTwo/NewsWithLatestTwo";
 import PhotoGallery from "../photoGallery/PhotoGallery";
 import TopNews from "../topNews/TopNews";
 import HomePageSkeleton from "@/components/skeleton/HomePageSkeleton";
+import { Video } from "../Video";
 
 const HomeMain = () => {
     // const { theme } = useTheme();
@@ -68,6 +69,8 @@ const HomeMain = () => {
             )}
             {/* news By position 3 */}
             {data?.newsByCategory[2] && <NewsOnly data={data?.newsByCategory[2]}/>}
+
+            {data?.videos && (<Video videos={data.videos} slug={'video'} category_name="ভিডিও"/>)}
             {/* news By position 4 */}
             {/* home ads 16 here */}
             {data?.newsByCategory[3] && (
