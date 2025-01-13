@@ -50,7 +50,7 @@ const HomeMain = () => {
             {data?.topNews && (
                 <TopNews
                     data={data.topNews}
-                    sideData={data?.newsByCategory[9]}
+                    //sideData={data?.newsByCategory[9]}
                     ads={data?.ads}
                 />
             )}
@@ -86,11 +86,11 @@ const HomeMain = () => {
             )}
             {/* news By position 6 */}
             {data?.newsByCategory[5] && (
-                <NewsWithLatest
+                <NewsOnly
                     data={data?.newsByCategory[5]}
-                    topnews={false}
-                    latest-post
-                    end_point="/populer-post"
+                    //topnews={false}
+                    //latest-post
+                    //end_point="/populer-post"
                 />
             )}
             {/* <NewsOnly data={data.newsByCategory[5]} /> */}
@@ -110,7 +110,8 @@ const HomeMain = () => {
             {data && <PhotoGallery/>}
             {/* news By position 4  */}
             {data?.newsByCategory[11] && (
-                <VideoGallery data={data?.newsByCategory[11]}/>
+                <NewsWithFourCol data={data?.newsByCategory[11]}/>
+                // <VideoGallery data={data?.newsByCategory[11]}/>
             )}
             {/* home ads 18 here */}
             {data?.ads.home_18 && (

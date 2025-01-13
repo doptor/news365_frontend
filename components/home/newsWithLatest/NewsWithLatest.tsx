@@ -1,6 +1,7 @@
 import LatestNewsVertical from "@/components/common/latestNews/LatestNewsVertical";
 import TopNews from "@/components/singleNews/TopNews";
 import {NewsItem} from "@/interface/post";
+import VideoIcon from "@/public/icons/VideoIcon";
 import TimeBefore from "@/ui/TimeBefore";
 import Image from "next/image";
 import Link from "next/link";
@@ -53,6 +54,7 @@ const NewsWithLatest = ({data, end_point, title, topnews}: NewsProps) => {
                                         category,
                                         encode_titl,
                                         post_date,
+                                        video
                                     } = item || {};
 
                                     return (
@@ -72,6 +74,10 @@ const NewsWithLatest = ({data, end_point, title, topnews}: NewsProps) => {
                                                             src={image_large}
                                                             loading="lazy"
                                                         />
+                                                        { video &&
+                                                            <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                <VideoIcon/></div>
+                                                            }
                                                     </div>
                                                 </div>
                                                 <div className="w-full md:w-1/2 lg:w-full">
@@ -104,6 +110,7 @@ const NewsWithLatest = ({data, end_point, title, topnews}: NewsProps) => {
                                             category,
                                             encode_titl,
                                             post_date,
+                                            video
                                         } = item || {};
                                         return (
                                             <div
@@ -126,6 +133,10 @@ const NewsWithLatest = ({data, end_point, title, topnews}: NewsProps) => {
                                                                 src={image_thumb}
                                                                 loading="lazy"
                                                             />
+                                                            { video &&
+                                                            <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                <VideoIcon/></div>
+                                                            }
                                                         </div>
                                                     </div>
                                                     <h3 className="text-lg text-[var(--dark)]    dark:text-white    ">
@@ -153,7 +164,7 @@ const NewsWithLatest = ({data, end_point, title, topnews}: NewsProps) => {
             </div>
 
             <LatestNewsVertical end_point={end_point} /> */}
-                        {topnews ? <TopNews count={10}/> : ""}
+                        {topnews ? <TopNews count={7}/> : ""}
                     </div>
                 </div>
             </div>

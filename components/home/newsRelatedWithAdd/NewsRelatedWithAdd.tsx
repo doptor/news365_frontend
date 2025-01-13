@@ -4,6 +4,7 @@ import TimeBefore from "@/ui/TimeBefore";
 import Image from "next/image";
 import Link from "next/link";
 import VideoEmbed from "@/components/VideoEmbed";
+import VideoIcon from "@/public/icons/VideoIcon";
 
 interface NewsProps {
     data: {
@@ -60,6 +61,7 @@ const NewsRelatedWithAdd = ({data, ads, videos}: NewsProps) => {
                                     category,
                                     encode_titl,
                                     post_date,
+                                    video
                                 } = item || {};
 
                                 return (
@@ -80,6 +82,10 @@ const NewsRelatedWithAdd = ({data, ads, videos}: NewsProps) => {
                                                         loading="lazy"
                                                     />
                                                 </div>
+                                                { video &&
+                                                            <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                <VideoIcon/></div>
+                                                            }
                                             </div>
                                             <div className="w-full md:w-1/2 lg:w-full">
                                                 <h3 className="text-2xl left-9 mx-4 md:mx-0 mt-2 md:mt-0 lg:mt-2 mb-0 md:mb-2 text-[var(--dark)]    dark:text-white    font-semibold">
@@ -110,6 +116,7 @@ const NewsRelatedWithAdd = ({data, ads, videos}: NewsProps) => {
                                         category,
                                         encode_titl,
                                         post_date,
+                                        video
                                     } = item || {};
 
                                     return (
@@ -134,6 +141,10 @@ const NewsRelatedWithAdd = ({data, ads, videos}: NewsProps) => {
                                                             loading="lazy"
                                                         />
                                                     </div>
+                                                    { video &&
+                                                            <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                <VideoIcon/></div>
+                                                            }
                                                 </div>
                                                 <h3 className="text-lg text-[var(--dark)]    dark:text-white   ">
                                                     {post_title}

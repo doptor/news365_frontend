@@ -1,12 +1,13 @@
 import AddCard from "@/components/common/addCard/AddCard";
-import {NewsItem} from "@/interface/post";
+import { NewsItem } from "@/interface/post";
+import VideoIcon from "@/public/icons/VideoIcon";
 import TimeBefore from "@/ui/TimeBefore";
 import Image from "next/image";
 import Link from "next/link";
 
 interface TopNewsProps {
     data: NewsItem[];
-    sideData: {
+    sideData?: {
         position: string;
         category_name: string;
         slug: string;
@@ -17,9 +18,9 @@ interface TopNewsProps {
     ads?: any;
 }
 
-const TopNews = ({data, ads, sideData}: TopNewsProps) => {
-    const {category_id, category_name, position, post, slug, status} =
-    sideData || {};
+const TopNews = ({ data, ads, sideData }: TopNewsProps) => {
+    const { category_id, category_name, position, post, slug, status } =
+        sideData || {};
 
     return (
         <section className="mt-5">
@@ -42,6 +43,7 @@ const TopNews = ({data, ads, sideData}: TopNewsProps) => {
                                         news_id,
                                         category,
                                         encode_titl,
+                                        video
                                     } = itm || {};
 
                                     return (
@@ -56,17 +58,17 @@ const TopNews = ({data, ads, sideData}: TopNewsProps) => {
                                                         </h1>
 
                                                         <p className="hidden lg:block">
-                              <span
-                                  className="text-lg text-[var(--gray-2)] dark:text-[var(--gray-3)] overflow-hidden line-clamp-3">
-                                {excerpt || stitle}
-                              </span>
+                                                            <span
+                                                                className="text-lg text-[var(--gray-2)] dark:text-[var(--gray-3)] overflow-hidden line-clamp-3">
+                                                                {excerpt || stitle}
+                                                            </span>
                                                         </p>
                                                     </Link>
 
                                                     <ul className="mt-5 xl:mt-10">
                                                         {data.slice(1, 4).map((itm, i) => {
-                                                            const {encode_titl, post_title, news_id} =
-                                                            itm || {};
+                                                            const { encode_titl, post_title, news_id } =
+                                                                itm || {};
                                                             return (
                                                                 <li
                                                                     key={news_id}
@@ -88,11 +90,8 @@ const TopNews = ({data, ads, sideData}: TopNewsProps) => {
                             clss="xl:absolute bottom-0 right-4"
                           /> */}
                                                 </div>
-                                                <div
-                                                    className="w-full lg:w-1/2 overflow-hidden order-1 relative aspect-video">
-                                                    <Link
-                                                        href={`/${category.toLocaleLowerCase()}/${encode_titl}`}
-                                                    >
+                                                <div className="w-full lg:w-1/2 overflow-hidden order-1 relative aspect-video">
+                                                    <Link href={`/${category.toLocaleLowerCase()}/${encode_titl}`}>
                                                         <Image
                                                             alt={post_title}
                                                             width={560}
@@ -101,6 +100,10 @@ const TopNews = ({data, ads, sideData}: TopNewsProps) => {
                                                             className="group-hover:scale-105 duration-700 ease-out w-full h-full"
                                                             src={image_large}
                                                         />
+                                                        {video &&
+                                                            <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                <VideoIcon /></div>
+                                                        }
                                                     </Link>
                                                 </div>
                                             </div>
@@ -121,6 +124,7 @@ const TopNews = ({data, ads, sideData}: TopNewsProps) => {
                                             news_id,
                                             category,
                                             encode_titl,
+                                            video
                                         } = itm || {};
 
                                         return (
@@ -144,19 +148,23 @@ const TopNews = ({data, ads, sideData}: TopNewsProps) => {
                                                                 src={image_thumb}
                                                                 loading="lazy"
                                                             />
+                                                            {video &&
+                                                                <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                    <VideoIcon /></div>
+                                                            }
                                                         </div>
                                                     </div>
                                                     <h2 className="text-lg text-[var(--dark)]    dark:text-white    font-semibold">
                                                         {post_title}
                                                     </h2>
                                                     <p className="hidden lg:block">
-                            <span
-                                className="text-[var(--gray-2)] dark:text-[var(--gray-3)] mt-2 text-base line-clamp-2">
-                              {excerpt || stitle}
-                            </span>
+                                                        <span
+                                                            className="text-[var(--gray-2)] dark:text-[var(--gray-3)] mt-2 text-base line-clamp-2">
+                                                            {excerpt || stitle}
+                                                        </span>
                                                     </p>
 
-                                                    <TimeBefore title={post_date}/>
+                                                    <TimeBefore title={post_date} />
                                                 </Link>
                                             </div>
                                         );
@@ -169,7 +177,7 @@ const TopNews = ({data, ads, sideData}: TopNewsProps) => {
                         <div className="w-full flex items-center justify-center">
                             <div className={`${ads?.home_12 ? "" : "h-[250px]"}`}>
                                 {/* home ads 12 here */}
-                                <AddCard imgPath={ads?.home_12}/>
+                                <AddCard imgPath={ads?.home_12} />
                             </div>
                         </div>
 
@@ -267,7 +275,7 @@ const TopNews = ({data, ads, sideData}: TopNewsProps) => {
 
                                 <TimeBefore
                                     title={post_date}
-                                    // clss="xl:absolute bottom-0"
+                                // clss="xl:absolute bottom-0"
                                 />
                             </div>
                         );
@@ -276,7 +284,7 @@ const TopNews = ({data, ads, sideData}: TopNewsProps) => {
                         <div className="w-full flex items-center justify-center">
                             <div className="home-right-b h-[250px]">
                                 {/* home ads 13 here */}
-                                <AddCard imgPath={ads?.home_13}/>
+                                <AddCard imgPath={ads?.home_13} />
                             </div>
                         </div>
                     </div>

@@ -57,7 +57,7 @@ const TopBar = () => {
                     tw && {label: "twitter", href: tw},
                 ].filter(Boolean)
             },
-            {label: "লাইভ টিভি", key: "live-tv", icon: faTv, href: "https://youtube.com", subMenu: []},
+            // {label: "লাইভ টিভি", key: "live-tv", icon: faTv, href: "https://youtube.com", subMenu: []},
         ];
 
         return (
@@ -101,7 +101,14 @@ const TopBar = () => {
                             })}
                         </ul>
                     </div>
-
+                    <div className="items-center justify-center " style={{color: "#f04130 !important"}}>
+                        <Link className="flex items-center gap-1 py-[1px] px-3 text-md " href={youtube}>
+                            {/* <div className="font-bold"><FontAwesomeIcon icon={faTv}/> লাইভ টিভি</div> */}
+                            <button className="rounded-3xl bg-[#f04130] text-white py-1.5 px-4 text-sm">
+                                <FontAwesomeIcon icon={faTv}/> লাইভ টিভি
+                            </button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         );

@@ -1,4 +1,5 @@
 import {NewsItem} from "@/interface/post";
+import VideoIcon from "@/public/icons/VideoIcon";
 import TimeBefore from "@/ui/TimeBefore";
 import Image from "next/image";
 import Link from "next/link";
@@ -41,6 +42,7 @@ const NewsWithFourCol = ({data}: NewsProps) => {
                             category,
                             encode_titl,
                             post_date,
+                            video
                         } = item || {};
 
                         return (
@@ -65,6 +67,10 @@ const NewsWithFourCol = ({data}: NewsProps) => {
                                                     loading="lazy"
                                                 />
                                             </div>
+                                            { video &&
+                                                            <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                <VideoIcon/></div>
+                                                            }
                                         </div>
                                         <div className="w-full">
                                             <h3 className="text-lg mx-4 md:mx-0 text-[var(--dark)]    dark:text-white   ">

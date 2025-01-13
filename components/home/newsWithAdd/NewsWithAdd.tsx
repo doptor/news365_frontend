@@ -1,5 +1,6 @@
 import AddCard from "@/components/common/addCard/AddCard";
 import {NewsItem} from "@/interface/post";
+import VideoIcon from "@/public/icons/VideoIcon";
 import TimeBefore from "@/ui/TimeBefore";
 import Image from "next/image";
 import Link from "next/link";
@@ -47,6 +48,7 @@ const NewsWithAdd = ({data, ads}: NewsProps) => {
                                     category,
                                     encode_titl,
                                     post_date,
+                                    video
                                 } = item || {};
 
                                 return (
@@ -77,6 +79,10 @@ const NewsWithAdd = ({data, ads}: NewsProps) => {
                                                             src={image_large}
                                                             loading="lazy"
                                                         />
+                                                        { video &&
+                                                            <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                <VideoIcon/></div>
+                                                            }
                                                     </div>
                                                 </div>
                                             </div>
@@ -97,6 +103,7 @@ const NewsWithAdd = ({data, ads}: NewsProps) => {
                                     category,
                                     encode_titl,
                                     post_date,
+                                    video
                                 } = item || {};
 
                                 return (
@@ -120,6 +127,10 @@ const NewsWithAdd = ({data, ads}: NewsProps) => {
                                                         src={image_thumb}
                                                         loading="lazy"
                                                     />
+                                                    { video &&
+                                                            <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                <VideoIcon/></div>
+                                                            }
                                                 </div>
                                             </div>
                                             <h3 className="text-lg text-[var(--dark)]    dark:text-white    line-clamp-2">

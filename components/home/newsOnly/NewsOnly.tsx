@@ -1,4 +1,5 @@
 import {NewsItem} from "@/interface/post";
+import VideoIcon from "@/public/icons/VideoIcon";
 import TimeBefore from "@/ui/TimeBefore";
 import Image from "next/image";
 import Link from "next/link";
@@ -44,6 +45,7 @@ const NewsOnly = ({data}: NewsProps) => {
                                 category,
                                 post_date,
                                 encode_titl,
+                                video
                             } = item || {};
 
                             return (
@@ -63,6 +65,10 @@ const NewsOnly = ({data}: NewsProps) => {
                                                     src={image_large}
                                                     loading="lazy"
                                                 />
+                                                { video &&
+                                                            <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                <VideoIcon/></div>
+                                                            }
                                             </div>
                                         </div>
                                         <div className="w-full md:w-1/2 lg:w-full">
@@ -94,6 +100,7 @@ const NewsOnly = ({data}: NewsProps) => {
                                     category,
                                     post_date,
                                     encode_titl,
+                                    video
                                 } = item || {};
 
                                 return (
@@ -117,6 +124,10 @@ const NewsOnly = ({data}: NewsProps) => {
                                                         loading="lazy"
                                                     />
                                                 </div>
+                                                { video &&
+                                                            <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                <VideoIcon/></div>
+                                                            }
                                             </div>
                                             <h3 className="text-lg text-[var(--dark)]    dark:text-white    line-clamp-2">
                                                 {post_title}
