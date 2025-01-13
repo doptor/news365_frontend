@@ -29,7 +29,7 @@ const CategoryMain = () => {
     const [pageNumber, setPageNumber] = useState(0);
     const [pageData, setPageData] = useState<any[]>([]);
     const [isPageDataLoading, setIsPageDataLoading] = useState(false);
-    const [limit, setLimit] = useState(50);
+    const [limit, setLimit] = useState(19);
 
     const param = useParams();
 
