@@ -52,10 +52,10 @@ const TopBar = () => {
             {label: "আর্কাইভ", key: "archive", icon: faArchive, href: "javascript:void(0)", subMenu: []},
             {
                 label: "সোশ্যাল মিডিয়া", key: "social", icon: faThumbsUp, href: "javascript:void(0)", subMenu: [
-                    {label: "facebook", href: fb},
-                    {label: "twitter", href: tw},
-                    {label: "youtube", href: youtube},
-                ]
+                    youtube && {label: "youtube", href: youtube},
+                    fb && {label: "facebook", href: fb},
+                    tw && {label: "twitter", href: tw},
+                ].filter(Boolean)
             },
             {label: "লাইভ টিভি", key: "live-tv", icon: faTv, href: "https://youtube.com", subMenu: []},
         ];
