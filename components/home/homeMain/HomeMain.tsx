@@ -50,7 +50,7 @@ const HomeMain = () => {
             {data?.topNews && (
                 <TopNews
                     data={data.topNews}
-                    //sideData={data?.newsByCategory[9]}
+                    sideData={data?.newsByCategory[9]}
                     ads={data?.ads}
                 />
             )}
@@ -109,8 +109,8 @@ const HomeMain = () => {
             {/* news By position 4  */}
             {data && <PhotoGallery/>}
             {/* news By position 4  */}
-            {data?.newsByCategory[11] && (
-                <NewsWithFourCol data={data?.newsByCategory[11]}/>
+            {data?.newsByCategory[10] && (
+                <NewsWithFourCol data={data?.newsByCategory[10]}/>
                 // <VideoGallery data={data?.newsByCategory[11]}/>
             )}
             {/* home ads 18 here */}
