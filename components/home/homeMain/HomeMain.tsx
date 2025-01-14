@@ -70,7 +70,7 @@ const HomeMain = () => {
             {/* news By position 3 */}
             {data?.newsByCategory[2] && <NewsOnly data={data?.newsByCategory[2]}/>}
 
-            {data?.videos && (<Video videos={data.videos} slug={'video'} category_name="ভিডিও"/>)}
+            {data?.videos && (<Video videos={data.videos?.slice(0, 4)} slug={'video'} category_name="ভিডিও"/>)}
             {/* news By position 4 */}
             {/* home ads 16 here */}
             {data?.newsByCategory[3] && (
@@ -96,7 +96,15 @@ const HomeMain = () => {
             {/* <NewsOnly data={data.newsByCategory[5]} /> */}
             {/* news By position 7 */}
             {data?.newsByCategory[6] && (
-                <NewsWithFourCol data={data?.newsByCategory[6]}/>
+                <NewsOnlyTwo data={data?.newsByCategory[6]}
+                style={{
+                    backgroundColor: "#fbfaf3",
+                    boxShadow: "-1px 1px 5px 5px rgba(0, 0, 0, 0.05)",
+                    paddingTop: "0.8rem",
+                    paddingBottom: "0.8rem",
+                    borderRadius: "10px"
+                }}
+                />
             )}
 
             {/* news By position 8 and 9  */}
@@ -110,12 +118,7 @@ const HomeMain = () => {
             {data && <PhotoGallery/>}
             {/* news By position 4  */}
             {data?.newsByCategory[10] && (
-                <NewsOnlyTwo data={data?.newsByCategory[10]} style={{
-                    backgroundColor: "#fbfaf3",
-                    boxShadow: "-1px 1px 5px 5px rgba(0, 0, 0, 0.05)",
-                    paddingTop: "0.5rem",
-                    paddingBottom: "0.5rem",
-                }}/>
+                <NewsOnlyTwo data={data?.newsByCategory[10]} />
                 // <VideoGallery data={data?.newsByCategory[11]}/>
             )}
             {/* home ads 18 here */}
