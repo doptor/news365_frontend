@@ -110,7 +110,12 @@ const HomeMain = () => {
             {data && <PhotoGallery/>}
             {/* news By position 4  */}
             {data?.newsByCategory[10] && (
-                <NewsWithFourCol data={data?.newsByCategory[10]}/>
+                <NewsOnlyTwo data={data?.newsByCategory[10]} style={{
+                    backgroundColor: "#fbfaf3",
+                    boxShadow: "-1px 1px 5px 5px rgba(0, 0, 0, 0.05)",
+                    paddingTop: "0.5rem",
+                    paddingBottom: "0.5rem",
+                }}/>
                 // <VideoGallery data={data?.newsByCategory[11]}/>
             )}
             {/* home ads 18 here */}

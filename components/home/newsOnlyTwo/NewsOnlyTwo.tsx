@@ -13,15 +13,16 @@ interface NewsProps {
         status: string;
         post: NewsItem[];
     };
+    style?: object
 }
 
-const NewsOnlyTwo = ({data}: NewsProps) => {
+const NewsOnlyTwo = ({data, style}: NewsProps) => {
     const {category_id, category_name, position, post, slug, status} =
     data || {};
 
     return (
         <section className="mt-[60px]">
-            <div className="container px-4 mx-auto">
+            <div className="container px-4 mx-auto" style={style}>
                 <div className="border-[var(--border-color)] dark:border-[var(--border-dark)] border-b-[2px] mb-3 pb-1">
                     <div className="flex items-center justify-between">
                         <Link href={`/${slug}`}>
