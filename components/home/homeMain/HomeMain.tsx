@@ -35,11 +35,19 @@ const HomeMain = () => {
 
     if (isLoading) return <HomePageSkeleton/>;
 
+    const specialStyle = {
+        backgroundColor: "#fbfaf3",
+        boxShadow: "-1px 1px 5px 5px rgba(0, 0, 0, 0.05)",
+        paddingTop: "0.8rem",
+        paddingBottom: "0.8rem",
+        borderRadius: "10px"
+    };
+
     return (
         <Fragment>
             {/* Hot news here */}
             {data?.top_braking?.post?.length > 0 && (
-                <HotNews data={data?.top_braking}/>
+                <HotNews data={data?.top_braking} style={specialStyle}/>
             )}
             {/* home ads 11 here */}
             {data?.ads.home_11 && (
@@ -97,13 +105,7 @@ const HomeMain = () => {
             {/* news By position 7 */}
             {data?.newsByCategory[6] && (
                 <NewsOnlyTwo data={data?.newsByCategory[6]}
-                style={{
-                    backgroundColor: "#fbfaf3",
-                    boxShadow: "-1px 1px 5px 5px rgba(0, 0, 0, 0.05)",
-                    paddingTop: "0.8rem",
-                    paddingBottom: "0.8rem",
-                    borderRadius: "10px"
-                }}
+                style={specialStyle}
                 />
             )}
 
