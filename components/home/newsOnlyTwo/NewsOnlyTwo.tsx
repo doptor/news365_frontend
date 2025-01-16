@@ -21,7 +21,7 @@ const NewsOnlyTwo = ({data, style}: NewsProps) => {
     data || {};
 
     return (
-        <section className="mt-[60px]">
+        <section className="mt-[60px] newsonlytwo">
             <div className="container px-4 mx-auto" style={style}>
                 <div className="border-[var(--border-color)] dark:border-[var(--border-dark)] border-b-[2px] mb-3 pb-1">
                     <div className="flex items-center justify-between">
@@ -130,7 +130,7 @@ const NewsOnlyTwo = ({data, style}: NewsProps) => {
                                                                 <VideoIcon/></div>
                                                             }
                                             </div>
-                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white   ">
+                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white   font-bold">
                                                 {post_title}
                                             </h3>
                                             <span
@@ -189,7 +189,7 @@ const NewsOnlyTwo = ({data, style}: NewsProps) => {
                                                                 <VideoIcon/></div>
                                                             }
                                             </div>
-                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white   ">
+                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white   font-bold">
                                                 {post_title}
                                             </h3>
                                             <span

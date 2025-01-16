@@ -133,7 +133,7 @@ const NewsWithAdd = ({data, ads}: NewsProps) => {
                                                             }
                                                 </div>
                                             </div>
-                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white    line-clamp-2">
+                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white    line-clamp-2 font-bold">
                                                 {post_title}
                                             </h3>
                                         </Link>
@@ -183,7 +183,7 @@ const NewsWithAdd = ({data, ads}: NewsProps) => {
                                                     />
                                                 </div>
                                             </div>
-                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white    line-clamp-2">
+                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white    line-clamp-2 font-bold">
                                                 {post_title}
                                             </h3>
                                         </Link>
@@ -199,7 +199,7 @@ const NewsWithAdd = ({data, ads}: NewsProps) => {
                         <div className="w-full flex items-center justify-center">
                             <div className="h-[250px]">
                                 {/* home ads 14 here */}
-                                <AddCard imgPath={ads?.home_14}/>
+                                <AddCard imgPath={ads?.home_13}/>
                                 <div></div>
                             </div>
                         </div>

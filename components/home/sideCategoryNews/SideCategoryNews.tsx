@@ -19,7 +19,7 @@ const SideCategoryNews = ({data}: NewsProps) => {
     data || {};
     return (
         <>
-            <div className="border-[var(--border-color)] dark:border-[var(--border-dark)] border-b-[2px] mb-3 pb-1">
+            <div className="SideCategoryNews border-[var(--border-color)] dark:border-[var(--border-dark)] border-b-[2px] mb-3 pb-1">
                 <div className="flex items-center justify-between">
                     <Link href={`/${slug}`}>
                         <h2 className="category-text">{category_name}</h2>
@@ -63,7 +63,7 @@ const SideCategoryNews = ({data}: NewsProps) => {
                                             />
                                         </div>
                                     </div>
-                                    <h3 className="mx-4 md:mx-0 text-lg text-[var(--dark)]    dark:text-white   ">
+                                    <h3 className="mx-4 md:mx-0 text-lg text-[var(--dark)]    dark:text-white   font-bold">
                                         {post_title}
                                     </h3>
                                 </Link>

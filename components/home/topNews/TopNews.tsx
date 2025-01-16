@@ -76,7 +76,7 @@ const TopNews = ({ data, ads, sideData }: TopNewsProps) => {
                                                                 >
                                                                     <Link
                                                                         href={`/${category.toLocaleLowerCase()}/${encode_titl}`}
-                                                                        className="line-clamp-1 text-lg font-medium left-9 text-[var(--dark)] mb-2 mr-2 md:mr-0 ml-4    dark:text-white   "
+                                                                        className="line-clamp-1 text-lg font-bold left-9 text-[var(--dark)] mb-2 mr-2 md:mr-0 ml-4    dark:text-white   "
                                                                     >
                                                                         {post_title}
                                                                     </Link>
@@ -224,7 +224,7 @@ const TopNews = ({ data, ads, sideData }: TopNewsProps) => {
                                             />
                                         </div>
                                         <div>
-                                            <h2 className="text-lg text-[var(--dark)]    dark:text-white   ">
+                                            <h2 className="text-lg text-[var(--dark)]    dark:text-white   font-bold">
                                                 {post_title}
                                             </h2>
                                             <p className="font-normal mt-2 text-gray-500 dark:text-gray-300">
@@ -268,7 +268,7 @@ const TopNews = ({ data, ads, sideData }: TopNewsProps) => {
                                             loading="lazy"
                                         />
                                     </div>
-                                    <h3 className="text-lg text-[var(--dark)]    dark:text-white   ">
+                                    <h3 className="text-lg text-[var(--dark)]    dark:text-white   font-bold">
                                         {post_title}
                                     </h3>
                                 </Link>
@@ -280,7 +280,7 @@ const TopNews = ({ data, ads, sideData }: TopNewsProps) => {
                             </div>
                         );
                     })}
-                    <div className="md:col-span-2 md:row-span-2 lg:col-span-1 md:order-1 lg:order-none relative">
+                    <div className="hidden md:col-span-2 md:row-span-2 lg:col-span-1 md:order-1 lg:order-none relative">
                         <div className="w-full flex items-center justify-center">
                             <div className="home-right-b h-[250px]">
                                 {/* home ads 13 here */}

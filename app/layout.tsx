@@ -62,10 +62,6 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link
-          href="https://fonts.maateen.me/solaiman-lipi/font.css"
-          rel="stylesheet"
-        />
       </head>
       <body>
         <ThemeWrapper>

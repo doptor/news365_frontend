@@ -30,10 +30,24 @@
   --border-dark: #525255;
 }
 
+@font-face {
+  font-family: 'SolaimanLipil';
+  src: url('/fonts/SolaimanLipi5e1f.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SolaimanLipiz';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.cdnfonts.com/s/14639/solaimanlipi.woff') format('woff');
+}
+
 body,
 html {
   scroll-behavior: smooth !important;
-  font-family: "SolaimanLipi", Arial, sans-serif !important;
+  font-family: "SolaimanLipil", Arial, sans-serif !important;
 }
 
 @layer base {

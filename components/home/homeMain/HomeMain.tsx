@@ -43,6 +43,8 @@ const HomeMain = () => {
         borderRadius: "10px"
     };
 
+    // console.log(data?.newsByCategory[9]);
+
     return (
         <Fragment>
             {/* Hot news here */}
@@ -57,7 +59,7 @@ const HomeMain = () => {
             {/* home ads 12 && 13 here */}
             {data?.topNews && (
                 <TopNews
-                    data={data.topNews}
+                    data={data.topNews.slice(0,9)}
                     sideData={data?.newsByCategory[9]}
                     ads={data?.ads}
                 />

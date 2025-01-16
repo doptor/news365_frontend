@@ -56,7 +56,7 @@ function NewsList({ posts }: { posts: NewsProps[] }) {
                                             />
                                         </div>
                                     </div>
-                                    <h3 className="text-lg text-[var(--dark)] grou;p-   dark:text-white">
+                                    <h3 className="text-lg text-[var(--dark)] grou;p-   dark:text-white font-bold">
                                         {post_title}
                                     </h3>
                                 </Link>
@@ -93,7 +93,7 @@ function TopNews({count=10}: {count: number}) {
             <input type="radio" name="tab" className="tab-input " checked={tab1Active} onChange={() => {
                 setTab1Active(true);
             }} />
-            <label className="tab-label">সর্বশেষ</label>
+            <label className="tab-label font-bold">সর্বশেষ</label>
         </div>
 
         <div className="inline-block" onClick={() => {
@@ -103,7 +103,7 @@ function TopNews({count=10}: {count: number}) {
                 setTab1Active(false);
                 console.log(tab1Active);
             }} />
-            <label className="tab-label">সর্বাধিক পঠিত</label>
+            <label className="tab-label font-bold">সর্বাধিক পঠিত</label>
         </div>
 
         <div className="tab-panel" style={{ display: tab1Active ? "block" : "none" }}>

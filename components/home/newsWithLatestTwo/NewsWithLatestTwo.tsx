@@ -29,7 +29,7 @@ const NewsWithLatestTwo = ({dataOne, dataTwo}: NewsProps) => {
     dataOne || {};
 
     return (
-        <section className="mt-[60px]">
+        <section className="mt-[60px] NewsWithLatestTwo">
             <div className="container px-4 mx-auto">
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6">
                     <div
@@ -144,7 +144,7 @@ const NewsWithLatestTwo = ({dataOne, dataTwo}: NewsProps) => {
                                                                 <VideoIcon/></div>
                                                             }
                                             </div>
-                                            <h3 className="mt-0 md:mt-2 order-1 md:order-2 text-lg text-[var(--dark)]    dark:text-white   ">
+                                            <h3 className="mt-0 md:mt-2 order-1 md:order-2 text-lg text-[var(--dark)]    dark:text-white   font-bold">
                                                 {post_title}
                                             </h3>
                                         </Link>

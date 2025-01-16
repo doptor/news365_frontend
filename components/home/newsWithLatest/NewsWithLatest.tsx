@@ -139,7 +139,7 @@ const NewsWithLatest = ({data, end_point, title, topnews}: NewsProps) => {
                                                             }
                                                         </div>
                                                     </div>
-                                                    <h3 className="text-lg text-[var(--dark)]    dark:text-white    ">
+                                                    <h3 className="text-lg text-[var(--dark)]    dark:text-white    font-bold">
                                                         {post_title}
                                                     </h3>
                                                 </Link>
@@ -164,7 +164,7 @@ const NewsWithLatest = ({data, end_point, title, topnews}: NewsProps) => {
             </div>
 
             <LatestNewsVertical end_point={end_point} /> */}
-                        {topnews ? <TopNews count={7}/> : ""}
+                        {topnews ? <TopNews count={6}/> : ""}
                     </div>
                 </div>
             </div>

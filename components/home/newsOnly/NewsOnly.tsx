@@ -20,7 +20,7 @@ const NewsOnly = ({data}: NewsProps) => {
     data || {};
 
     return (
-        <section className="mt-[60px]">
+        <section className="mt-[60px] newsonly">
             <div className="container px-4 mx-auto">
                 <div
                     className="border-[var(--border-color)] dark:border-[var(--border-dark)]  border-b-[2px] mb-3 pb-1">
@@ -129,7 +129,7 @@ const NewsOnly = ({data}: NewsProps) => {
                                                                 <VideoIcon/></div>
                                                             }
                                             </div>
-                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white    line-clamp-2">
+                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white    line-clamp-2 font-bold">
                                                 {post_title}
                                             </h3>
                                             <span
@@ -181,7 +181,7 @@ const NewsOnly = ({data}: NewsProps) => {
                                                     />
                                                 </div>
                                             </div>
-                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white    line-clamp-2">
+                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white    line-clamp-2 font-bold">
                                                 {post_title}
                                             </h3>
                                             <span

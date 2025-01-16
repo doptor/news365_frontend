@@ -146,7 +146,7 @@ const NewsRelatedWithAdd = ({data, ads, videos}: NewsProps) => {
                                                                 <VideoIcon/></div>
                                                             }
                                                 </div>
-                                                <h3 className="text-lg text-[var(--dark)]    dark:text-white   ">
+                                                <h3 className="text-lg text-[var(--dark)]    dark:text-white   font-bold">
                                                     {post_title}
                                                 </h3>
                                             </Link>
@@ -201,7 +201,7 @@ const NewsRelatedWithAdd = ({data, ads, videos}: NewsProps) => {
                                                     />
                                                 </div>
                                             </div>
-                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white   ">
+                                            <h3 className="text-lg text-[var(--dark)]    dark:text-white   font-bold">
                                                 {post_title}
                                             </h3>
 

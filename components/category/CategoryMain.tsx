@@ -235,7 +235,7 @@ const CategoryMain = () => {
                                                     />
                                                 </div>
                                             </div>
-                                            <h2 className="text-lg text-[var(--dark)]    dark:text-white    ">
+                                            <h2 className="text-lg text-[var(--dark)]    dark:text-white    font-bold">
                                                 {post_title}
                                             </h2>
                                             <span
