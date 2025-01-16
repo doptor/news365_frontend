@@ -10,7 +10,20 @@ interface VideoEmbedProps {
 }
 
 const youtube_embedded_video_url = (url: string): string => {
-    const [youtube_watch_root, videoid] = url.split("?v=");
+    function extractVideoId(url: string): string {
+        const regex = /youtu\.be\/([^?]+)/; // Match 'youtu.be/' and capture everything until '?' or the end
+        const match = url.match(regex);
+        return match ? match[1] : "";
+    }
+    
+    const hostname = (new URL(url)).hostname;
+    if (hostname.includes('youtu.be')) {
+        var youtube_watch_root = "https://www.youtube.com/watch";
+        var videoid = extractVideoId(url);
+    } else {
+        var [youtube_watch_root, videoid] = url.split("?v=");
+    }
+    
     const youtube_root = youtube_watch_root.replace('watch', '');
     return `${youtube_root}embed/${videoid}`;
 };

@@ -14,11 +14,11 @@ export const Video = ({videos, slug, category_name}: {videos: any, slug: string,
                 </div>
                 <div
                     className="grid grid-cols-1 md:grid-cols-12 gap-8 relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:right-0 after:left-0 after:-bottom-3 dark:after:bg-[var(--border-dark)]">
-                    {videos?.map((video: string, index: number) => (
+                    {videos?.map(( {category, id, title, url}: {category: string, id: number, title: string, url: string}, index: number) => (
                         <div
-                            key={index}
-                            className="col-span-6 md:col-span-6 lg:col-span-3 xl:col-span-3 relative after:absolute after:w-full after:h-[1px] after:-bottom-3 after:right-0 after:last:h-0 lg:after:w-[1px] lg:after:h-full lg:after:-right-3 lg:after:top-0 lg:after:last:w-0 dark:after:bg-[var(--border-dark)]">
-                            <VideoEmbed videoUrl={video} width={100}/>
+                            key={id}
+                            className="col-span-4 md:col-span-4 lg:col-span-4 xl:col-span-4 relative after:absolute after:w-full after:h-[1px] after:-bottom-3 after:right-0 after:last:h-0 lg:after:w-[1px] lg:after:h-full lg:after:-right-3 lg:after:top-0 lg:after:last:w-0 dark:after:bg-[var(--border-dark)]">
+                            <VideoEmbed videoUrl={url} width={100}/>
                         </div>
                     ))}
 

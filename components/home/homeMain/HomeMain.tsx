@@ -78,7 +78,7 @@ const HomeMain = () => {
             {/* news By position 3 */}
             {data?.newsByCategory[2] && <NewsOnly data={data?.newsByCategory[2]}/>}
 
-            {data?.videos && (<Video videos={data.videos?.slice(0, 4)} slug={'video'} category_name="ভিডিও"/>)}
+            {data?.videos && (<Video videos={data.videos.data.slice(0, 3)} slug={'video'} category_name="ভিডিও"/>)}
             {/* news By position 4 */}
             {/* home ads 16 here */}
             {data?.newsByCategory[3] && (
