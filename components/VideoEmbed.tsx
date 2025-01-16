@@ -125,8 +125,7 @@ const IframeVideoEmbed: React.FC<VideoEmbedProps> = ({ videoUrl, title }) => {
         height={113}
         src={videoUrl}
         title={title}
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    ></iframe>;
+        allow="fullscreen; accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"></iframe>;
 };
 
 const VideoEmbed: React.FC<VideoEmbedProps> = ({ videoUrl, title, width }) => {
