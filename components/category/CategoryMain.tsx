@@ -159,7 +159,7 @@ const CategoryMain = () => {
                                                     >
                                                         <Link
                                                             href={`/${category.toLocaleLowerCase()}/${encode_titl}`}
-                                                            className="line-clamp-1 text-lg font-medium left-9 text-[var(--dark)] mb-2 mr-2 md:mr-0 ml-4    dark:text-white   "
+                                                            className="line-clamp-1 text-lg font-bold left-9 text-[var(--dark)] mb-2 mr-2 md:mr-0 ml-4    dark:text-white   "
                                                         >
                                                             {post_title}
                                                         </Link>
@@ -219,7 +219,7 @@ const CategoryMain = () => {
                                         key={news_id}
                                         className="col-span-12 md:col-span-6 relative"
                                     >
-                                        <Link
+                                        <Link className=""
                                             href={`/${category.toLocaleLowerCase()}/${encode_titl}`}
                                         >
                                             <div className="ml-3 mb-2 xl:mb-0 overflow-hidden float-right relative">
@@ -257,6 +257,8 @@ const CategoryMain = () => {
                                     post_title,
                                     encode_titl,
                                     image_thumb,
+                                    excerpt,
+                                    stitle,
                                 } = itm;
                                 return (
                                     <div
@@ -279,9 +281,13 @@ const CategoryMain = () => {
                                                     />
                                                 </div>
                                             </div>
-                                            <h2 className="text-lg text-[var(--dark)]    dark:text-white   ">
+                                            <h2 className="text-lg text-[var(--dark)]    dark:text-white   font-bold">
                                                 {post_title}
                                             </h2>
+                                            <span
+                                                className="text-[var(--gray-2)] dark:text-[var(--gray-3)] mt-2 text-base line-clamp-2">
+                                                  {excerpt || stitle}
+                                            </span>
 
                                             <TimeBefore title={post_date}/>
                                         </Link>
@@ -299,7 +305,7 @@ const CategoryMain = () => {
                                         setPageNumber((prev) => prev + 1);
                                     }}
                                 >
-                                    See more {isPageDataLoading && <Spin clss="w-7 h-7"/>}
+                                    আরও দেখুন {isPageDataLoading && <Spin clss="w-7 h-7"/>}
                                 </button>
                             </div>
                         ) : (
