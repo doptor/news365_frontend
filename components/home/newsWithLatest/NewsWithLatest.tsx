@@ -1,6 +1,6 @@
 import LatestNewsVertical from "@/components/common/latestNews/LatestNewsVertical";
 import TopNews from "@/components/singleNews/TopNews";
-import {NewsItem} from "@/interface/post";
+import { NewsItem } from "@/interface/post";
 import VideoIcon from "@/public/icons/VideoIcon";
 import TimeBefore from "@/ui/TimeBefore";
 import Image from "next/image";
@@ -20,9 +20,9 @@ interface NewsProps {
     topnews: boolean;
 }
 
-const NewsWithLatest = ({data, end_point, title, topnews}: NewsProps) => {
-    const {category_id, category_name, position, post, slug, status} =
-    data || {};
+const NewsWithLatest = ({ data, end_point, title, topnews }: NewsProps) => {
+    const { category_id, category_name, position, post, slug, status } =
+        data || {};
 
     return (
         <section className="mt-[60px]">
@@ -59,38 +59,92 @@ const NewsWithLatest = ({data, end_point, title, topnews}: NewsProps) => {
 
                                     return (
                                         <div key={i} className="-mx-4 md:px-4">
-                                            <Link
-                                                className="group flex flex-col gap-0 md:flex-row md:gap-3 lg:flex-col lg:gap-0"
-                                                href={`/${category.toLocaleLowerCase()}/${encode_titl}`}
-                                            >
-                                                <div className="overflow-hidden w-full md:w-1/2 lg:w-full relative">
-                                                    <div>
-                                                        <Image
-                                                            alt={post_title}
-                                                            width={560}
-                                                            height={315}
-                                                            decoding="async"
-                                                            className="w-full h-auto group-hover:scale-105 duration-700 ease-out"
-                                                            src={image_large}
-                                                            loading="lazy"
-                                                        />
-                                                        { video &&
-                                                            <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
-                                                                <VideoIcon/></div>
+                                            <div>
+                                                <Link
+                                                    className="group flex flex-col gap-0 md:flex-row md:gap-3 lg:flex-col lg:gap-0"
+                                                    href={`/${category.toLocaleLowerCase()}/${encode_titl}`}
+                                                >
+                                                    <div className="overflow-hidden w-full md:w-1/2 lg:w-full relative">
+                                                        <div>
+                                                            <Image
+                                                                alt={post_title}
+                                                                width={560}
+                                                                height={315}
+                                                                decoding="async"
+                                                                className="w-full h-auto group-hover:scale-105 duration-700 ease-out"
+                                                                src={image_large}
+                                                                loading="lazy"
+                                                            />
+                                                            {video &&
+                                                                <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                    <VideoIcon /></div>
                                                             }
+                                                        </div>
                                                     </div>
-                                                </div>
-                                                <div className="w-full md:w-1/2 lg:w-full">
-                                                    <h3 className="text-2xl left-9 mx-4 md:mx-0 text-[var(--dark)] mt-2 md:mt-0 lg:mt-2 mb-0 md:mb-2    dark:text-white    font-semibold">
-                                                        {post_title}
-                                                    </h3>
-                                                    <p className="hidden md:block text-base text-[var(--gray-2)] dark:text-[var(--gray-3)]">
-                                                        <span className="line-clamp-2">{excerpt || stitle}</span>
-                                                    </p>
+                                                    <div className="w-full md:w-1/2 lg:w-full">
+                                                        <h3 className="text-2xl left-9 mx-4 md:mx-0 text-[var(--dark)] mt-2 md:mt-0 lg:mt-2 mb-0 md:mb-2    dark:text-white    font-semibold">
+                                                            {post_title}
+                                                        </h3>
+                                                        <p className="hidden md:block text-base text-[var(--gray-2)] dark:text-[var(--gray-3)]">
+                                                            <span className="line-clamp-2">{excerpt || stitle}</span>
+                                                        </p>
 
-                                                    <TimeBefore title={post_date} clss="ml-4 md:ml-0"/>
-                                                </div>
-                                            </Link>
+                                                        <TimeBefore title={post_date} clss="ml-4 md:ml-0" />
+                                                    </div>
+                                                </Link>
+                                            </div>
+                                            <div className="flex flex-col mt-6">
+                                                {post?.slice(1, 2)?.map((item, i) => {
+                                                    const {
+                                                        category_name,
+                                                        image_large,
+                                                        image_thumb,
+                                                        post_title,
+                                                        stitle,
+                                                        excerpt,
+                                                        news_id,
+                                                        category,
+                                                        encode_titl,
+                                                        post_date,
+                                                        video
+                                                    } = item || {};
+                                                    return (
+                                                        <div
+                                                            key={i}
+                                                            className="mb-6 last:mb-0 relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:-bottom-3 after:last:h-0 dark:after:bg-[var(--border-dark)]"
+                                                        >
+                                                            <Link
+                                                                className="group"
+                                                                href={`/${category.toLocaleLowerCase()}/${encode_titl}`}
+                                                            >
+                                                                <div
+                                                                    className="ml-2 md:ml-0 lg:ml-2 mb-2 xl:mb-0 overflow-hidden float-right relative">
+                                                                    <div>
+                                                                        <Image
+                                                                            alt={post_title}
+                                                                            width={330}
+                                                                            height={186}
+                                                                            decoding="async"
+                                                                            className="w-[124px] h-auto lg:w-[110px] lg:h-[75px] xl:w-[180px] xl:h-[120px] object-cover group-hover:scale-105 duration-700 ease-out"
+                                                                            src={image_thumb}
+                                                                            loading="lazy"
+                                                                        />
+                                                                        {video &&
+                                                                            <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                                <VideoIcon /></div>
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                                <h3 className="text-lg text-[var(--dark)]    dark:text-white    font-bold">
+                                                                    {post_title}
+                                                                </h3>
+                                                            </Link>
+
+                                                            <TimeBefore title={post_date} />
+                                                        </div>
+                                                    );
+                                                })}
+                                            </div>
                                         </div>
                                     );
                                 })}
@@ -98,7 +152,7 @@ const NewsWithLatest = ({data, end_point, title, topnews}: NewsProps) => {
                             <div
                                 className="col-span-12 md:col-span-12 lg:col-span-6 xl:col-span-5 relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:-bottom-3 after:right-0 after:last:h-0 lg:after:w-[1px] lg:after:h-full lg:after:-right-3 lg:after:top-0 lg:after:last:w-0 dark:after:bg-[var(--border-dark)]">
                                 <div className="flex flex-col">
-                                    {post?.slice(1, 5)?.map((item, i) => {
+                                    {post?.slice(2, 6)?.map((item, i) => {
                                         const {
                                             category_name,
                                             image_large,
@@ -133,9 +187,9 @@ const NewsWithLatest = ({data, end_point, title, topnews}: NewsProps) => {
                                                                 src={image_thumb}
                                                                 loading="lazy"
                                                             />
-                                                            { video &&
-                                                            <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
-                                                                <VideoIcon/></div>
+                                                            {video &&
+                                                                <div className="w-8 h-8 xl:w-8 xl:h-8 rounded-full flex items-center justify-center shadow-md absolute top-1 left-1  bg-[var(--secondary)] group-hover:bg-[var(--secondary)]">
+                                                                    <VideoIcon /></div>
                                                             }
                                                         </div>
                                                     </div>
@@ -144,7 +198,7 @@ const NewsWithLatest = ({data, end_point, title, topnews}: NewsProps) => {
                                                     </h3>
                                                 </Link>
 
-                                                <TimeBefore title={post_date}/>
+                                                <TimeBefore title={post_date} />
                                             </div>
                                         );
                                     })}
@@ -164,7 +218,7 @@ const NewsWithLatest = ({data, end_point, title, topnews}: NewsProps) => {
             </div>
 
             <LatestNewsVertical end_point={end_point} /> */}
-                        {topnews ? <TopNews count={6}/> : ""}
+                        {topnews ? <TopNews count={7} /> : ""}
                     </div>
                 </div>
             </div>
