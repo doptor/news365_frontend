@@ -280,56 +280,102 @@ const TopNews = ({ data, ads, sideData }: TopNewsProps) => {
                             </div>
                         );
                     })}
-                    <div className="hidden md:col-span-2 md:row-span-2 lg:col-span-1 md:order-1 lg:order-none relative">
-                        <div className="w-full flex items-center justify-center">
+                    <div className="hidden md:block md:col-span-2 md:row-span-2 lg:col-span-1 md:order-1 lg:order-none relative">
+                        <div>
+                            {post?.slice(1, 2)?.map((itm) => {
+                                const {
+                                    category_name,
+                                    image_thumb,
+                                    post_title,
+                                    stitle,
+                                    excerpt,
+                                    news_id,
+                                    category,
+                                    encode_titl,
+                                    post_by_name,
+                                    post_by_image,
+                                } = itm || {};
+
+                                return (
+                                    <Link
+                                        key={news_id}
+                                        className="flex gap-3 group"
+                                        href={`/${category.toLocaleLowerCase()}/${encode_titl}`}
+                                    >
+                                        <div>
+                                            <Image
+                                                alt={post_by_name}
+                                                width={100}
+                                                height={100}
+                                                decoding="async"
+                                                className="w-24 md:w-36 lg:w-24 rounded-full"
+                                                src={post_by_image}
+                                                loading="lazy"
+                                            />
+                                        </div>
+                                        <div>
+                                            <h2 className="text-lg text-[var(--dark)]    dark:text-white   font-bold">
+                                                {post_title}
+                                            </h2>
+                                            <p className="font-normal mt-2 text-gray-500 dark:text-gray-300">
+                                                {post_by_name}
+                                            </p>
+                                        </div>
+                                    </Link>
+                                );
+                            })}
+                        </div>
+                        {/* <div className="hidden w-full flex items-center justify-center">
                             <div className="home-right-b h-[250px]">
-                                {/* home ads 13 here */}
+                                home ads 13 here
                                 <AddCard imgPath={ads?.home_13} />
                             </div>
-                        </div>
+                        </div> */}
                     </div>
-                    {data?.slice(9, 12)?.map((itm) => {
-                        const {
-                            post_title,
-                            image_thumb,
-                            post_date,
-                            stitle,
-                            excerpt,
-                            category_name,
-                            news_id,
-                            category,
-                            encode_titl,
-                        } = itm || {};
-                        return (
-                            <div key={news_id} className="relative">
-                                <Link
-                                    className="group"
-                                    href={`/${category.toLocaleLowerCase()}/${encode_titl}`}
-                                >
-                                    <div className="ml-2 md:ml-0 lg:ml-2 mb-2 overflow-hidden float-right relative">
-                                        <Image
-                                            alt={post_title}
-                                            width={160}
-                                            height={90}
-                                            decoding="async"
-                                            className="w-[124px] h-auto lg:w-[110px] lg:h-[75px] object-cover group-hover:scale-105 duration-700 ease-out"
-                                            src={image_thumb}
-                                            loading="lazy"
-                                        />
-                                    </div>
-                                    <h3 className="text-lg text-[var(--dark)]    dark:text-white   ">
-                                        {post_title}
-                                    </h3>
-                                </Link>
+                    <div className="hidden">
+                        {data?.slice(9, 12)?.map((itm) => {
+                            const {
+                                post_title,
+                                image_thumb,
+                                post_date,
+                                stitle,
+                                excerpt,
+                                category_name,
+                                news_id,
+                                category,
+                                encode_titl,
+                            } = itm || {};
+                            return (
+                                <div key={news_id} className="relative">
+                                    <Link
+                                        className="group"
+                                        href={`/${category.toLocaleLowerCase()}/${encode_titl}`}
+                                    >
+                                        <div className="ml-2 md:ml-0 lg:ml-2 mb-2 overflow-hidden float-right relative">
+                                            <Image
+                                                alt={post_title}
+                                                width={160}
+                                                height={90}
+                                                decoding="async"
+                                                className="w-[124px] h-auto lg:w-[110px] lg:h-[75px] object-cover group-hover:scale-105 duration-700 ease-out"
+                                                src={image_thumb}
+                                                loading="lazy"
+                                            />
+                                        </div>
+                                        <h3 className="text-lg text-[var(--dark)]    dark:text-white   ">
+                                            {post_title}
+                                        </h3>
+                                    </Link>
 
-                                <TimeBefore
-                                    title={post_date}
-                                    // clss="xl:absolute bottom-0"
-                                    clss="ml-4 md:ml-0"
-                                />
-                            </div>
-                        );
-                    })}
+                                    <TimeBefore
+                                        title={post_date}
+                                        // clss="xl:absolute bottom-0"
+                                        clss="ml-4 md:ml-0"
+                                    />
+                                </div>
+                            );
+                        })}
+                    </div>
                 </div>
             </div>
         </section>

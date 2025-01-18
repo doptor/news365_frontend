@@ -93,7 +93,7 @@ const NewsWithLatest = ({ data, end_point, title, topnews }: NewsProps) => {
                                                     </div>
                                                 </Link>
                                             </div>
-                                            <div className="flex flex-col mt-6">
+                                            <div className="mx-4 md:mx-0 flex flex-col mt-6">
                                                 {post?.slice(1, 2)?.map((item, i) => {
                                                     const {
                                                         category_name,
@@ -138,6 +138,9 @@ const NewsWithLatest = ({ data, end_point, title, topnews }: NewsProps) => {
                                                                 <h3 className="text-lg text-[var(--dark)]    dark:text-white    font-bold">
                                                                     {post_title}
                                                                 </h3>
+                                                                <p className="hidden md:block text-base text-[var(--gray-2)] dark:text-[var(--gray-3)]">
+                                                                    <span className="line-clamp-2">{excerpt || stitle}</span>
+                                                                </p>
                                                             </Link>
 
                                                             <TimeBefore title={post_date} />
