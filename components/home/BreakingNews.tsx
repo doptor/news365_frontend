@@ -28,7 +28,7 @@ const BreakingNews = () => {
     const marquee_style = {animationDuration: marquee_dur.toString() + 's'};
 
     return (
-        <section>
+        <section className="print:hidden">
             <div className="container px-4 mx-auto my-1">
                 <div className="row">
                     <div className="col-md-12">

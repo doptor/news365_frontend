@@ -99,7 +99,7 @@ const FooterContact = ({data, socialMediaLinks}: { data: ContactInformation, soc
                 <p className="inline-block">
                     &copy; {new Date().getFullYear()} {website}
                 </p>
-                <div>
+                <div className="print:hidden">
                     <div className="mb-3 flex gap-3 justify-left">
                         <Socials socialMediaLinks={socialMediaLinks}/>
                     </div>

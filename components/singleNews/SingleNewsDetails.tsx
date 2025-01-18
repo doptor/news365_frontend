@@ -1,11 +1,11 @@
-import {NewsArticle} from "@/interface/post";
+import { NewsArticle } from "@/interface/post";
 import CopyIcon from "@/public/icons/CopyIcon";
 import FacebookIcon from "@/public/icons/FacebookIcon";
 import WhatsAppIcon from "@/public/icons/WhatsAppIcon";
 import timestampToBangleDateWithTime from "@/utils/timestampToBangleDateWithTime";
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect, useState} from "react";
+import { useEffect, useRef, useState } from "react";
 import {
     FacebookShareButton,
     TwitterShareButton,
@@ -24,6 +24,7 @@ import "@/app/commentlist.css";
 import date_output_bn from "@/utils/datetime";
 import NewsWithLatest from "../home/newsWithLatest/NewsWithLatest";
 import TopNews from "./TopNews";
+import PrintIcon from "@/public/icons/PrintIcon";
 
 interface Comment {
     comments: string;
@@ -66,9 +67,9 @@ interface SingleNews {
 }
 
 const SingleNewsDetails = ({
-                               data,
-                               clss,
-                           }: {
+    data,
+    clss,
+}: {
     data: SingleNews;
     clss?: string;
 }) => {
@@ -80,6 +81,28 @@ const SingleNewsDetails = ({
     const [commentUsername, setCommentUsername] = useState("");
     const [commentSuccessText, setCommentSuccessText] = useState<String | null>("");
     const [commentErrorText, setCommentErrorText] = useState<String | null>("");
+
+    const printRef = useRef<HTMLElement | null>(null);
+    const handlePrint = () => {
+        // const printContents = printRef.current.innerHTML;
+        // const printWindow = window.open("", "_blank");
+        // printWindow.document.write(`
+        //   <html>
+        //     <head>
+        //       <title>Niropekkho</title>
+        //       <link href="https://cdn.tailwindcss.com" rel="stylesheet">
+        //     </head>
+        //     <body class="p-4">
+        //       ${printContents}
+        //     </body>
+        //   </html>
+        // `);
+        // printWindow.document.close();
+        // printWindow.focus();
+        // printWindow.print();
+        // printWindow.close();
+        window.print();
+    };
 
     const get_comments = () => {
         if (!data.id) {
@@ -100,9 +123,9 @@ const SingleNewsDetails = ({
 
     const handleCommentSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        const {id} = data;
+        const { id } = data;
         try {
-            const {data} = await instance.post('/comment', {
+            const { data } = await instance.post('/comment', {
                 'comment_text': commentText,
                 'post_id': id,
                 'username': commentUsername
@@ -164,16 +187,16 @@ const SingleNewsDetails = ({
 
             <div className="container px-4 mx-auto print:px-0">
 
-                <div className={`${data.ads.news_view_31 ? "mb-4" : ""}`}>
-                    <AddCard imgPath={data.ads.news_view_31}/>
+                <div className={`${data.ads.news_view_31 ? "mb-4" : ""} print:hidden`}>
+                    <AddCard imgPath={data.ads.news_view_31} />
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-12 gap-6 print:!block">
                     <div
                         className="col-span-12 lg:col-span-8 xl:col-span-9 relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:right-0 after:-bottom-3 lg:after:top-0 lg:after:-right-3 lg:after:w-[1px] lg:after:h-full dark:after:bg-[var(--border-dark)] print:!col-span-12 print:after:bg-transparent">
-                        <article>
+                        <article ref={printRef}>
                             <div className="mb-3">
-                                <nav className="print:hidden pb-2">
+                                <nav className=" pb-2">
                                     <ol className="w-fit flex items-center gap-1 text-sm border-b border-[var(--border-color)] dark:border-[var(--border-dark)]">
                                         <li>
                                             <Link
@@ -185,8 +208,8 @@ const SingleNewsDetails = ({
                                         </li>
                                     </ol>
                                 </nav>
-                                <h2 style={{fontSize: "1.2em"}} className="my-1">{excerpt || stitle}</h2>
-                                <h1 style={{fontWeight: "bold"}}
+                                <h2 style={{ fontSize: "1.2em" }} className="my-1 print:hidden">{excerpt || stitle}</h2>
+                                <h1 style={{ fontWeight: "bold" }}
                                     className="text-[var(--dark)] text-3xl lg:text-4xl leading-[40px] lg:leading-[50px] mb-6 dark:text-white print:dark:text-[var(--dark)] print:text-2xl print:mb-2">
                                     {title}
                                 </h1>
@@ -216,52 +239,57 @@ const SingleNewsDetails = ({
                                     <div
                                         className="w-full md:w-1/2 print:hidden flex items-center whitespace-nowrap justify-start md:justify-end min-h-[40px] md:min-h-[48px] select-none">
                                         <div className="flex items-center">
-                                            <FacebookShareButton
-                                                url={`${hostName}/${category}/${encode_title}`}
-                                                title={title}
-                                                quote={excerpt || stitle}
-                                                className="flex justify-center cursor-pointer text-xs h-[32px] w-[36px] mr-2 !bg-[var(--slate)] dark:!bg-[var(--gray-1)] dark:!text-white rounded-md items-center border"
-                                            >
-                                                <FacebookIcon/>
-                                            </FacebookShareButton>
-
-                                            <WhatsappShareButton
-                                                url={`${hostName}/${category}/${encode_title}`}
-                                                title={title}
-                                                className="flex justify-center cursor-pointer text-xs h-[32px] w-[36px] mr-2 !bg-[var(--slate)] dark:!bg-[var(--gray-1)] dark:!text-white rounded-md items-center border"
-                                            >
-                                                <WhatsAppIcon/>
-                                            </WhatsappShareButton>
-
-                                            <TwitterShareButton
-                                                url={`${hostName}/${category}/${encode_title}`}
-                                                title={title}
-                                                className="flex justify-center cursor-pointer text-xs h-[32px] w-[36px] mr-2 !bg-[var(--slate)] dark:!bg-[var(--gray-1)] dark:!text-white rounded-md items-center border"
-                                            >
-                                                <svg
-                                                    className="w-4 h-4 fill-black dark:fill-white"
-                                                    viewBox="0 0 512 512"
+                                            <div className="flex items-center print:hidden">
+                                                <FacebookShareButton
+                                                    url={`${hostName}/${category}/${encode_title}`}
+                                                    title={title}
+                                                    quote={excerpt || stitle}
+                                                    className="flex justify-center cursor-pointer text-xs h-[32px] w-[36px] mr-2 !bg-[var(--slate)] dark:!bg-[var(--gray-1)] dark:!text-white rounded-md items-center border"
                                                 >
-                                                    <path
-                                                        d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
-                                                </svg>
-                                            </TwitterShareButton>
+                                                    <FacebookIcon />
+                                                </FacebookShareButton>
 
-                                            <div
-                                                className="flex justify-center cursor-pointer text-xs h-[32px] w-[36px] mr-2 bg-[var(--slate)] dark:bg-[var(--gray-1)] dark:text-white rounded-md items-center"
-                                                onClick={() =>
-                                                    navigator.clipboard.writeText(
-                                                        `${hostName}/${category}/${encode_title}`
-                                                    )
-                                                }
-                                            >
-                                                <CopyIcon/>
+                                                <WhatsappShareButton
+                                                    url={`${hostName}/${category}/${encode_title}`}
+                                                    title={title}
+                                                    className="flex justify-center cursor-pointer text-xs h-[32px] w-[36px] mr-2 !bg-[var(--slate)] dark:!bg-[var(--gray-1)] dark:!text-white rounded-md items-center border"
+                                                >
+                                                    <WhatsAppIcon />
+                                                </WhatsappShareButton>
+
+                                                <TwitterShareButton
+                                                    url={`${hostName}/${category}/${encode_title}`}
+                                                    title={title}
+                                                    className="flex justify-center cursor-pointer text-xs h-[32px] w-[36px] mr-2 !bg-[var(--slate)] dark:!bg-[var(--gray-1)] dark:!text-white rounded-md items-center border"
+                                                >
+                                                    <svg
+                                                        className="w-4 h-4 fill-black dark:fill-white"
+                                                        viewBox="0 0 512 512"
+                                                    >
+                                                        <path
+                                                            d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"></path>
+                                                    </svg>
+                                                </TwitterShareButton>
+
+                                                <div
+                                                    className="flex justify-center cursor-pointer text-xs h-[32px] w-[36px] mr-2 bg-[var(--slate)] dark:bg-[var(--gray-1)] dark:text-white rounded-md items-center"
+                                                    onClick={() =>
+                                                        navigator.clipboard.writeText(
+                                                            `${hostName}/${category}/${encode_title}`
+                                                        )
+                                                    }
+                                                >
+                                                    <CopyIcon />
+                                                </div>
+                                            </div>
+                                            <div onClick={handlePrint} className="cursor-pointer">
+                                                <PrintIcon />
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div className="clss">
+                            <div className="clss ">
                                 {video ? (
                                     // <iframe
                                     //   className="aspect-video h-auto w-full"
@@ -272,7 +300,7 @@ const SingleNewsDetails = ({
                                     //   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                     // ></iframe>
 
-                                    <VideoEmbed videoUrl={video} title={title}/>
+                                    <div className="print:hidden"><VideoEmbed videoUrl={video} title={title} /></div>
                                 ) : (
                                     <figure>
                                         <Image
@@ -283,20 +311,19 @@ const SingleNewsDetails = ({
                                             className="w-full h-auto"
                                             src={image_large}
                                         />
-                                        <div
-                                            className="text-center post_image_title bg_lite border_bottom py-1 mb-1">{image_title}</div>
+                                        <div className="text-center post_image_title bg_lite border_bottom py-1 mb-1 print:hidden">{image_title}</div>
                                     </figure>
                                 )}
                             </div>
                             <div
                                 className="text-[var(--dark)] mt-3 text-xl leading-8 print:leading-7 dark:text-white break-words print:dark:text-[var(--dark)] print:text-base">
                                 <div>
-                                    <strong style={{display: "none"}}>{excerpt || stitle}</strong>
+                                    <strong style={{ display: "none" }}>{excerpt || stitle}</strong>
 
                                     <div className="my-3 flex flex-col">
                                         <div
                                             className="[&>p]:mt-5 news_details"
-                                            dangerouslySetInnerHTML={{__html: news}}
+                                            dangerouslySetInnerHTML={{ __html: news }}
                                         />
                                     </div>
                                 </div>
@@ -305,7 +332,7 @@ const SingleNewsDetails = ({
 
                         <div className="print:hidden gap-3 py-3 flex flex-wrap">
                             {tags.map((singleTag) => {
-                                const {tag} = singleTag;
+                                const { tag } = singleTag;
                                 return (
                                     <Link
                                         key={tag}
@@ -318,9 +345,9 @@ const SingleNewsDetails = ({
                             })}
                         </div>
 
-                        <div>
+                        <div className="print:hidden">
 
-                            <div className="container mt-5 comment-section" style={{display: "none"}}>
+                            <div className="container mt-5 comment-section" style={{ display: "none" }}>
 
                                 <div className="row justify-content-center">
                                     <div className="comment-list-container">
@@ -350,13 +377,13 @@ const SingleNewsDetails = ({
                                     <h2>Leave a Comment</h2>
                                     <form onSubmit={handleCommentSubmit} className="comment-form">
                                         <div className="form-group">
-                      <textarea
-                          className="form-control comment-textarea"
-                          placeholder="Write your comment..."
-                          value={commentText}
-                          onChange={(e) => setCommentText(e.target.value)}
-                          rows={5} // Adjust number of rows as needed
-                      />
+                                            <textarea
+                                                className="form-control comment-textarea"
+                                                placeholder="Write your comment..."
+                                                value={commentText}
+                                                onChange={(e) => setCommentText(e.target.value)}
+                                                rows={5} // Adjust number of rows as needed
+                                            />
                                         </div>
                                         <div className="form-group">
                                             <input
@@ -443,7 +470,7 @@ const SingleNewsDetails = ({
                 <AddCard imgPath={data.ads.news_view_31} />
               </div> */}
 
-                            <TopNews count={10}/>
+                            <TopNews count={10} />
 
                             <div className="mb-3">
                                 <div
@@ -501,9 +528,9 @@ const SingleNewsDetails = ({
                                         <div className="w-full flex items-center justify-center">
                                             <div
                                                 className={`${data.ads.news_view_32 ? "" : "h-[250px]"
-                                                }`}
+                                                    }`}
                                             >
-                                                <AddCard imgPath={data.ads.news_view_32}/>
+                                                <AddCard imgPath={data.ads.news_view_32} />
                                             </div>
                                         </div>
                                     </div>

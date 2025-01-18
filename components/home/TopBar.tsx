@@ -61,12 +61,12 @@ const TopBar = () => {
         ];
 
         return (
-            <div className="timebar border-b py-2">
+            <div className="timebar border-b py-2 ">
                 <div className="container px-4 py-2 mx-auto flex justify-between">
                     <div>
                         <Link href="/" aria-label="logo"> <Image src={logo} alt="logo" width={180} height={100}/></Link>
                     </div>
-                    <div className="flex flex-wrap grow items-center justify-center ">
+                    <div className="flex flex-wrap grow items-center justify-center print:hidden">
                         <ul className="flex gap-2 whitespace-nowrap">
                             {topLinks.map((item) => {
                                 const {label, key, href} = item;
@@ -101,7 +101,7 @@ const TopBar = () => {
                             })}
                         </ul>
                     </div>
-                    <div className="items-center justify-center " style={{color: "#f04130 !important"}}>
+                    <div className="items-center justify-center print:hidden" style={{color: "#f04130 !important"}}>
                         <Link className="flex items-center gap-1 py-[1px] px-3 text-md " href={youtube}>
                             {/* <div className="font-bold"><FontAwesomeIcon icon={faTv}/> লাইভ টিভি</div> */}
                             <button className="rounded-3xl bg-[#f04130] text-white py-1.5 px-4 text-sm">
