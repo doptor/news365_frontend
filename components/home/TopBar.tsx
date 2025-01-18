@@ -101,10 +101,10 @@ const TopBar = () => {
                             })}
                         </ul>
                     </div>
-                    <div className="items-center justify-center print:hidden" style={{color: "#f04130 !important"}}>
+                    <div className="hidden lg:flex items-center justify-center print:hidden" style={{color: "#f04130 !important"}}>
                         <Link className="flex items-center gap-1 py-[1px] px-3 text-md " href={youtube}>
                             {/* <div className="font-bold"><FontAwesomeIcon icon={faTv}/> লাইভ টিভি</div> */}
-                            <button className="rounded-3xl bg-[#f04130] text-white py-1.5 px-4 text-sm">
+                            <button className="whitespace-nowrap rounded-3xl bg-[#f04130] text-white py-1.5 px-4 text-sm">
                                 <FontAwesomeIcon icon={faTv}/> লাইভ টিভি
                             </button>
                         </Link>
