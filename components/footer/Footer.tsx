@@ -54,15 +54,13 @@ const Footer = () => {
                 </div>
                 <div className="flex mb-4">
                     <div className="w-1/2">
-                        <p>
+                        <p className="print:hidden">
                         বাংলাদেশ ও বিশ্বের সকল খবর, ব্রেকিং নিউজ, লাইভ নিউজ, রাজনীতি, বাণিজ্য, খেলা, বিনোদনসহ সকল সর্বশেষ সংবাদ সবার আগে পড়তে ক্লিক করুন দৈনিক নিরপেক্ষ ডট কম।
                         </p>
-                        <br/>
-                        <p>
+                        <p className="mt-4 print:mt-0">
                             <strong className="fw-bold">{contact?.content}</strong>
                         </p>
-                        <br/>
-                        <p className="text-lg md:text-base mb-2">{contact?.address.split("<br>")}</p>
+                        <p className="text-lg md:text-base mb-2 mt-2">{contact?.address.split("<br>")}</p>
                     </div>
                     <div className="w-1/2">
                         <div
@@ -84,7 +82,7 @@ const Footer = () => {
 
                 </div>
                 <div>
-                <p className="inline-block">স্বত্ব &copy; {contact.editor} <span>{new Date().getFullYear()}</span></p>
+                <p className="inline-block print:hidden">স্বত্ব &copy; {contact.editor} <span>{new Date().getFullYear()}</span></p>
                 </div>
             </>
         );

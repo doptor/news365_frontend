@@ -96,7 +96,7 @@ const FooterContact = ({ data, socialMediaLinks }: { data: ContactInformation, s
                         ইমেইল: {email}
                     </Link>
                 </p>
-                <p className="hidden inline-block">স্বত্ব &copy; {editor} <span>{new Date().getFullYear()}</span></p>
+                <p className="hidden print:inline-block">স্বত্ব &copy; {editor} <span>{new Date().getFullYear()}</span></p>
                 <div className="print:hidden">
                     <div className="mb-3 flex gap-3 justify-left">
                         <Socials socialMediaLinks={socialMediaLinks} />
