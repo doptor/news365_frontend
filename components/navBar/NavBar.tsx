@@ -132,7 +132,7 @@ const NavBar = () => {
               </div>
 
               <button
-                className="p-2 last:pr-0"
+                className=" p-2 last:pr-0"
                 aria-label="search"
                 onClick={() => setShowSearch(!showSearch)}
               >

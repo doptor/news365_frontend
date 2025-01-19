@@ -1,12 +1,15 @@
 "use client";
 
 import ChevronDownIcon from "@/public/icons/ChevronDownIcon";
+import MenuIcon from "@/public/icons/MenuIcon";
 import MoonIcon from "@/public/icons/MoonIcon";
+import SearchIcon from "@/public/icons/SearchIcon";
 import SunIcon from "@/public/icons/SunIcon";
 import XIcon from "@/public/icons/XIcon";
 import fetcher from "@/utils/fetcher";
 import Link from "next/link";
-import { Fragment } from "react";
+import { useRouter } from "next/router";
+import { Fragment, useState } from "react";
 import useSWR from "swr";
 
 type HandleSidebar = () => void;
@@ -34,6 +37,25 @@ type CategoryItem = {
 type CategoryData = CategoryItem[];
 
 const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
+  const [showSearch, setShowSearch] = useState(false);
+  const [searchText, setSearchText] = useState("");
+
+  // const router = useRouter();
+
+  const handleSearchItem = (e: any) => {
+    // Prevent the default form submission behavior
+    e.preventDefault();
+
+    // Construct the search query URL based on the provided search text
+    const searchQuery = `/search?search_slug=${searchText}`;
+
+    // Use the router to navigate the user to the search results page with the constructed query
+    // router.replace(searchQuery);
+
+    // set the search showing false
+    setShowSearch(false);
+  };
+
   const {
     data,
     error,
@@ -106,14 +128,13 @@ const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
     <div className="fixed top-0 h-screen w-screen flex flex-row justify-start z-[2147483647]">
       <div
         className="flex-1 bg-[#cfcfcf6e] cursor-pointer"
-        onClick={handleSidebar}
-      ></div>
+        onClick={handleSidebar}></div>
       <div
         className="select-none h-screen bg-white dark:bg-[var(--dark)] shadow-lg flex flex-col fixed top-0 right-0 w-80"
         style={{ transition: "width 300ms cubic-bezier(0.2, 0, 0, 1) 0s" }}
       >
         <div className="flex justify-between md:justify-end items-center py-1 px-2">
-          <div className="p-3 last:pr-0 hidden">
+          <div className="hidden p-3 last:pr-0 ">
             <button className="flex" aria-label="theme" onClick={handleTheme}>
               {theme === "light" ? (
                 <MoonIcon />
@@ -131,6 +152,71 @@ const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
             <span className="sr-only">বন্ধ করুন</span>
           </button>
         </div>
+
+        <div className="hidden flex items-center justify-center print:hidden">
+          <div className="p-3 last:pr-0 hidden md:block">
+            <button
+              className="flex hidden"
+              aria-label="theme"
+              onClick={handleTheme}
+            >
+              {theme === "light" ? (
+                <div className="text-black">
+                  <MoonIcon />
+                </div>
+              ) : (
+                <div className="text-white">
+                  <SunIcon />
+                </div>
+              )}
+            </button>
+          </div>
+
+          <button
+            className="p-2 last:pr-0"
+            aria-label="search"
+            onClick={() => setShowSearch(!showSearch)}
+          >
+            <SearchIcon clss="" />
+          </button>
+          <button
+            className="p-2 last:pr-0 "
+            type="button"
+            aria-label="menu"
+            onClick={handleSidebar}
+          >
+            <MenuIcon />
+          </button>
+        </div>
+
+        {showSearch && (
+          <div className="border-tz border-[var(--primary)] sticky top-[7px] z-50   shadow-[0px_1px_2px_rgba(0,0,0,0.2)]">
+            <div className="container mx-auto p-3">
+              <form className="flex items-center" onSubmit={handleSearchItem}>
+                <input
+                  type="text"
+                  className="w-full py-3 px-4 text-[var(--dark)] dark:text-white focus:outline-none focus:bottom-0 rounded-l border"
+                  placeholder="Search....."
+                  onChange={(e: any) => setSearchText(e.target.value)}
+                />
+                <button
+                  type="submit"
+                  className="px-6 py-3 text-white bg-[var(--primary)]"
+                >
+                  <SearchIcon clss="stroke-white" />
+                </button>
+                <button
+                  type="button"
+                  className="hidden border-l px-6 py-3 text-white bg-[var(--primary)] rounded-r"
+                  onClick={() => setShowSearch(false)}
+                >
+                  <XIcon clss="w-6 h-6" />
+                </button>
+              </form>
+            </div>
+          </div>
+        )}
+
         <div className="mx-2 py-4 overflow-y-auto sidebar-scrollbar-none">
           {content}
         </div>

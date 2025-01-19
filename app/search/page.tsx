@@ -28,6 +28,7 @@ export default function SearchPage() {
     const [pageNumber, setPageNumber] = useState(0);
     const [isLoadingMore, setIsLoadingMore] = useState(false);
     const [currentUrl, setCurrentUrl] = useState("");
+    const [noData, setNoData] = useState(false);
 
     // Get the Search parameters
     const searchParams = useSearchParams();
@@ -48,6 +49,7 @@ export default function SearchPage() {
                     });
 
                     if (data.code === 200) {
+                        if (!data.data.length) setNoData(true);
                         setData((prev): any => [...prev, ...data.data]);
 
                         setError("");
@@ -123,10 +125,10 @@ export default function SearchPage() {
                             <div
                                 className="pb-1 flex flex-col md:flex-row md:justify-between gap-2 md:gap-0 items-center">
                                 <h1 className="text-xl md:text-2xl text-[var(--primary)] dark:text-[var(--primary)]">
-                                    Today&apos;s news
+                                    অনুসন্ধানকৃত ফলাফল
                                 </h1>
                                 <div
-                                    className="w-auto flex items-center whitespace-nowrap justify-start min-h-[40px] md:min-h-[48px] print:hidden select-none">
+                                    className="hidden w-auto flex items-center whitespace-nowrap justify-start min-h-[40px] md:min-h-[48px] print:hidden select-none">
                                     <div className="flex items-center">
                                         <FacebookShareButton
                                             url={currentUrl}
@@ -223,19 +225,21 @@ export default function SearchPage() {
                                 );
                             })}
                         </div>
-                        <div className="flex justify-center">
+                        {noData?<></>:
+                            <div className="flex justify-center">
                             <button
                                 className="flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed text-white text-lg bg-[var(--primary)] px-4 py-2 hover:bg-[var(--primary)] rounded-sm"
                                 disabled={isLoadingMore}
                                 onClick={() => setPageNumber((prev) => prev + 1)}
                             >
-                                See more
+                                আরও দেখুন
                                 {isLoadingMore && <Spin clss="w-7 h-7"/>}
                             </button>
                         </div>
+                        }
                     </div>
                     <div
-                        className="col-span-12 md:col-span-5 lg:col-span-4 xl:col-span-3 relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:-bottom-3 after:right-0 after:last:h-0 md:after:w-[1px] md:after:h-full md:after:-right-3 md:after:top-0 md:after:last:w-0 dark:after:bg-[var(--border-dark)]">
+                        className="hidden col-span-12 md:col-span-5 lg:col-span-4 xl:col-span-3 relative after:bg-[var(--border-color)] after:absolute after:w-full after:h-[1px] after:-bottom-3 after:right-0 after:last:h-0 md:after:w-[1px] md:after:h-full md:after:-right-3 md:after:top-0 md:after:last:w-0 dark:after:bg-[var(--border-dark)]">
                         <div className="md:sticky md:top-[4.5rem]">
                             <div className="w-full flex items-center justify-center">
                                 {/* <AddCard imgPath={add1} /> */}
