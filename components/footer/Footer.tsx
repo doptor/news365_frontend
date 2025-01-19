@@ -59,7 +59,7 @@ const Footer = () => {
                         </p>
                         <br/>
                         <p>
-                            <strong className="fw-bold">সম্পাদক:</strong> {contact?.editor}
+                            <strong className="fw-bold">{contact?.content}</strong>
                         </p>
                         <br/>
                         <p className="text-lg md:text-base mb-2">{contact?.address.split("<br>")}</p>
@@ -82,6 +82,9 @@ const Footer = () => {
                         })}
                     </div>
 
+                </div>
+                <div>
+                <p className="inline-block">স্বত্ব &copy; {contact.editor} <span>{new Date().getFullYear()}</span></p>
                 </div>
             </>
         );

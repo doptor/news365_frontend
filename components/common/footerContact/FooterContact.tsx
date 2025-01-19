@@ -16,7 +16,7 @@ type ContactInformation = {
     longitude: string;
 };
 
-const FooterContact = ({data, socialMediaLinks}: { data: ContactInformation, socialMediaLinks?: any }) => {
+const FooterContact = ({ data, socialMediaLinks }: { data: ContactInformation, socialMediaLinks?: any }) => {
     const {
         address,
         content,
@@ -38,8 +38,8 @@ const FooterContact = ({data, socialMediaLinks}: { data: ContactInformation, soc
                         href={`tel:${phone}`}
                         target="_blank"
                     >
-                        <abbr className="cursor-help" title="Phone">
-                            <TelephoneIcon/>
+                        <abbr className="hidden cursor-help" title="Phone">
+                            <TelephoneIcon />
                             {/* <svg
                       className="w-4 h-4 fill-black dark:fill-white"
                       viewBox="0 0 24 24"
@@ -48,17 +48,17 @@ const FooterContact = ({data, socialMediaLinks}: { data: ContactInformation, soc
                       <path d="M21.384,17.752a2.108,2.108,0,0,1-.522,3.359,7.543,7.543,0,0,1-5.476.642C10.5,20.523,3.477,13.5,2.247,8.614a7.543,7.543,0,0,1,.642-5.476,2.108,2.108,0,0,1,3.359-.522L8.333,4.7a2.094,2.094,0,0,1,.445,2.328A3.877,3.877,0,0,1,8,8.2c-2.384,2.384,5.417,10.185,7.8,7.8a3.877,3.877,0,0,1,1.173-.781,2.092,2.092,0,0,1,2.328.445Z"></path>
                     </svg> */}
                         </abbr>
-                        {phone}
+                        ফোন: {phone}
                     </Link>
                 </p>
-                <p className="inline-block">
+                <p className="inline-block hidden">
                     <Link
                         className="flex gap-1 items-center"
                         href={`tel:${phone_two}`}
                         target="_blank"
                     >
                         <abbr className="cursor-help" title="Mobile">
-                            <MobileIcon/>
+                            <MobileIcon />
                             {/* <svg
                       className="w-4 h-4 fill-black dark:fill-white"
                       viewBox="0 0 32 32"
@@ -90,18 +90,16 @@ const FooterContact = ({data, socialMediaLinks}: { data: ContactInformation, soc
                         href={`mailto:${email}`}
                         target="_blank"
                     >
-                        <abbr className="cursor-help" title="Email">
-                            <EmailIcon/>
+                        <abbr className="hidden cursor-help" title="Email">
+                            <EmailIcon />
                         </abbr>
-                        {email}
+                        ইমেইল: {email}
                     </Link>
                 </p>
-                <p className="inline-block">
-                    &copy; {new Date().getFullYear()} {website}
-                </p>
+                <p className="hidden inline-block">স্বত্ব &copy; {editor} <span>{new Date().getFullYear()}</span></p>
                 <div className="print:hidden">
                     <div className="mb-3 flex gap-3 justify-left">
-                        <Socials socialMediaLinks={socialMediaLinks}/>
+                        <Socials socialMediaLinks={socialMediaLinks} />
                     </div>
                 </div>
             </div>
