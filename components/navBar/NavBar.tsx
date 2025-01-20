@@ -152,29 +152,31 @@ const NavBar = () => {
       </header>
 
       {showSearch && (
-        <div className="border-t border-[var(--primary)] sticky top-[70px] z-50   shadow-[0px_1px_2px_rgba(0,0,0,0.2)]">
-          <div className="container mx-auto p-3">
-            <form className="flex items-center" onSubmit={handleSearchItem}>
-              <input
-                type="text"
-                className="w-full py-3 px-4 text-[var(--dark)] dark:text-white focus:outline-none focus:bottom-0 rounded-l border"
-                placeholder="Search....."
-                onChange={(e: any) => setSearchText(e.target.value)}
-              />
-              <button
-                type="submit"
-                className="px-6 py-3 text-white bg-[var(--primary)]"
-              >
-                <SearchIcon clss="stroke-white" />
-              </button>
-              <button
-                type="button"
-                className="border-l px-6 py-3 text-white bg-[var(--primary)] rounded-r"
-                onClick={() => setShowSearch(false)}
-              >
-                <XIcon clss="w-6 h-6" />
-              </button>
-            </form>
+        <div className="container mx-auto border-tz border-[var(--primary)] sticky top-0 z-50   shadow-[0px_1px_2px_rgba(0,0,0,0.2)]">
+          <div className="">
+            <div className="p-3z absolute container">
+              <form className="flex items-center" onSubmit={handleSearchItem}>
+                <input
+                  type="text"
+                  className="w-full py-3 px-4 text-[var(--dark)] dark:text-white focus:outline-none focus:bottom-0 rounded-l border"
+                  placeholder="Search....."
+                  onChange={(e: any) => setSearchText(e.target.value)}
+                />
+                <button
+                  type="submit"
+                  className="px-6 py-3 text-white bg-[var(--primary)]"
+                >
+                  <SearchIcon clss="stroke-white" />
+                </button>
+                <button
+                  type="button"
+                  className="border-l px-6 py-3 text-white bg-[var(--primary)] rounded-r"
+                  onClick={() => setShowSearch(false)}
+                >
+                  <XIcon clss="w-6 h-6" />
+                </button>
+              </form>
+            </div>
           </div>
         </div>
       )}

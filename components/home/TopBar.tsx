@@ -41,7 +41,6 @@ const TopBar = () => {
         const {logo, social_link} = webSettingData;
         const {fb, flickr, google, linkd, pin, tw, vimo, vk, youtube} = social_link;
         const topLinks: any[] = [
-            {label: "আজকের পত্রিকা", key: "ajker", icon: faTableList, href: "javascript:void(0)", subMenu: []},
             {
                 label: "ই পেপার",
                 key: "epaper",
@@ -57,7 +56,6 @@ const TopBar = () => {
                     tw && {label: "twitter", href: tw},
                 ].filter(Boolean)
             },
-            // {label: "লাইভ টিভি", key: "live-tv", icon: faTv, href: "https://youtube.com", subMenu: []},
         ];
 
         return (
@@ -66,7 +64,7 @@ const TopBar = () => {
                     <div>
                         <Link href="/" aria-label="logo"> <Image src={logo} alt="logo" width={180} height={100}/></Link>
                     </div>
-                    <div className="flex flex-wrap grow items-center justify-center print:hidden">
+                    <div className="flex flex-wrap grow items-center justify-left ml-40 print:hidden">
                         <ul className="flex gap-2 whitespace-nowrap">
                             {topLinks.map((item) => {
                                 const {label, key, href} = item;
