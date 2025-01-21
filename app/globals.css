@@ -192,3 +192,10 @@ a :hover {
 .border_bottom {
   border-bottom: 1px solid #dee2e6 !important;
 }
+
+@media (min-width: 768px) {
+  .md\:before\:\[\&\>\*\]\:bg-\[var\(--border-color\)\]>*::before {
+      content: '';
+      background-color: transparent !important;
+  }
+}
