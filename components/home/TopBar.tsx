@@ -23,6 +23,19 @@ import {
 
 import { faFacebookF, faYoutube, faXTwitter, faTiktok, faLinkedin, faInstagram, faYoutubeSquare, faTwitterSquare, faFacebookSquare, faLinkedinIn, faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
 
+function chunkArray<T>(array: T[], chunkSize: number): T[][] {
+    if (!array || chunkSize <= 0) {
+        return [];
+    }
+
+    const result: T[][] = [];
+    for (let i = 0; i < array.length; i += chunkSize) {
+        const chunk = array.slice(i, i + chunkSize);
+        result.push(chunk);
+    }
+    return result;
+}
+
 const TopBar = () => {
 
     const [openSubMenu, setOpenSubMenu] = useState(null);
@@ -54,13 +67,14 @@ const TopBar = () => {
             },
             { label: "আর্কাইভ", key: "archive", icon: faArchive, href: "javascript:void(0)", subMenu: [] },
             {
-                label: "সোশ্যাল মিডিয়া", key: "social", icon: faThumbsUp, href: "javascript:void(0)", subMenu: [
-                    fb && { label: "Facebook", icon: faFacebookSquare, href: fb.split(',') },
-                    youtube && { label: "Youtube", icon: faYoutubeSquare, href: youtube.split(',') },
-                    tiktok && { label: "Tiktok", icon: faTiktok, href: tiktok.split(',') },
-                    linkd && { label: "LinkedIn", icon: faLinkedinIn, href: linkd.split(',') },
-                    tw && { label: "X.com", icon: faTwitterSquare, href: tw.split(',') },
-                    insta && { label: "Instagram", icon: faInstagramSquare, href: insta.split(',') },
+                label: "সোশ্যাল মিডিয়া", key: "social", icon: faThumbsUp, href: "javascript:void(0)", 
+                    subMenu: [
+                    fb && { label: "Facebook", icon: faFacebookSquare, icon_color: "#1877F2", href: fb.split(',') },
+                    youtube && { label: "Youtube", icon: faYoutubeSquare, icon_color: "#FF0000", href: youtube.split(',') },
+                    tiktok && { label: "Tiktok", icon: faTiktok, icon_color: "#000000", href: tiktok.split(',') },
+                    linkd && { label: "LinkedIn", icon: faLinkedinIn, icon_color: "#0077B5", href: linkd.split(',') },
+                    tw && { label: "X.com", icon: faTwitterSquare, icon_color: "#1DA1F2", href: tw.split(',') },
+                    insta && { label: "Instagram", icon: faInstagramSquare, icon_color: "#C13584", href: insta.split(',') },
                 ].filter(Boolean)
             },
         ];
@@ -88,23 +102,30 @@ const TopBar = () => {
                                         </Link>
                                         {item.key === openSubMenu ?
                                             <div
-                                                className="absolute -right-80 top-full pt-2 w-48z bg-white border rounded shadow-md z-50"
-                                            onMouseLeave={() => setOpenSubMenu(null)}
+                                                className="absolute -right-60 top-full pt-2 w-48z bg-white border rounded shadow-md z-50"
+                                                onMouseLeave={() => setOpenSubMenu(null)}
                                             > {/* Mega menu */}
                                                 <div className=" p-2">
-                                                    {item.subMenu.map((subItem: { label: string, icon: IconDefinition, href: string[] }) => (
+                                                    {item.subMenu.map((subItem: { label: string, icon: IconDefinition, icon_color: string, href: string[] }) => (
                                                         <div key={subItem.label} className="px-2">
                                                             <div>{subItem.label}</div>
-                                                            <div className="flex">
-                                                                {subItem.href.map((url: string) => {
-                                                                    const urlParts = url.split('/').filter((part) => part);
-                                                                    const name = urlParts[urlParts.length - 1];
-                                                                    return <div key={url}>
-                                                                        <Link href={url} className="block px-4 py-2 text-xs text-gray-700 hover:bg-gray-100">
-                                                                            <span className="mr-2"><FontAwesomeIcon icon={subItem.icon} /></span>{name}</Link>
-                                                                    </div>
-                                                                })}
+                                                            <div>
+                                                                {
+                                                                    chunkArray(subItem.href, 4).map((urlList) => {
+                                                                        return <div className="flex">
+                                                                            {urlList.map((url: string) => {
+                                                                                const urlParts = url.split('/').filter((part) => part);
+                                                                                const name = urlParts[urlParts.length - 1];
+                                                                                return <div className="flex-grow-0 flex-shrink-0 px-2 py-1" key={url}>
+                                                                                    <Link href={url} className="block whitespace-nowrap px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                                                                        <span className="mr-2"><FontAwesomeIcon icon={subItem.icon} color={subItem.icon_color} /></span>{name}</Link>
+                                                                                </div>
+                                                                            })}
+                                                                        </div>;
+                                                                    })
+                                                                }
                                                             </div>
+
                                                         </div>
                                                     ))}
                                                 </div>
