@@ -139,7 +139,7 @@ const TopBar = () => {
                                                                 {
                                                                     chunkArray(subItem.data, 4).map((urlList) => {
                                                                         return <div className="flex">
-                                                                            {urlList.map((link) => {
+                                                                            {urlList.map((link: any) => {
                                                                                 // const urlParts = url.split('/').filter((part) => part);
                                                                                 // const name = urlParts[urlParts.length - 1];
                                                                                 return <div className="flex-grow-0 flex-shrink-0 px-2 py-1" key={link.url}>
