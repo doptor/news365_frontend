@@ -28,11 +28,11 @@ export async function generateMetadata(): Promise<Metadata> {
   const faviconWithCacheBuster = `${favicon}?v=${new Date().getTime()}`;
   return {
     title: title,
-    description: meta_description,
+    description: meta_description !== '' ? meta_description : title,
     keywords: [meta_keyword],
     openGraph: {
       title: title,
-      description: meta_description,
+      description: meta_description !== '' ? meta_description : title,
       url: site_name,
       siteName: site_name,
       images: [
