@@ -8,8 +8,8 @@ import SunIcon from "@/public/icons/SunIcon";
 import XIcon from "@/public/icons/XIcon";
 import fetcher from "@/utils/fetcher";
 import Link from "next/link";
-import { useRouter } from "next/router";
-import { Fragment, useState } from "react";
+import { useRouter } from "next/navigation";
+import { Fragment, useEffect, useState } from "react";
 import useSWR from "swr";
 
 type HandleSidebar = () => void;
@@ -39,8 +39,24 @@ type CategoryData = CategoryItem[];
 const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
   const [showSearch, setShowSearch] = useState(false);
   const [searchText, setSearchText] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
+  const router = useRouter();
 
-  // const router = useRouter();
+
+  useEffect(() => {
+    // Initial check on mount
+    setShowSearch(window.innerWidth <= 768);
+
+    // Handle resize
+    const handleResize = () => {
+      setShowSearch(window.innerWidth <= 768);
+      setIsMobile(window.innerWidth <= 768)
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  
 
   const handleSearchItem = (e: any) => {
     // Prevent the default form submission behavior
@@ -50,10 +66,18 @@ const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
     const searchQuery = `/search?search_slug=${searchText}`;
 
     // Use the router to navigate the user to the search results page with the constructed query
-    // router.replace(searchQuery);
+    router.replace(searchQuery);
 
     // set the search showing false
-    setShowSearch(false);
+    // if (!isMobile) {
+    //   setShowSearch(false);
+
+    // }
+  };
+
+  const handleLinkClick = (slug: any) => {
+    router.push(`/${slug}`);
+    setTimeout(handleSidebar, 3000);
   };
 
   const {
@@ -83,6 +107,10 @@ const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
                       <Link
                         className="px-2 py-3 text-lg md:text-base block w-[85%] group-open:bg-gray-50 group-open:dark:bg-[#3f3f40] hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                         href={`/${slug}`}
+                        onClick={(e) => {
+                          e.preventDefault()
+                          handleLinkClick(slug)
+                        }}
                       >
                         {menu_lavel}
                       </Link>
@@ -100,6 +128,10 @@ const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
                             key={menu_content_id}
                             className="flex items-center pl-5 pr-2 py-3 text-lg md:text-base text-gray-900 hover:bg-gray-100 border-t-[1px] dark:text-white dark:hover:bg-gray-700"
                             href={`/${slug}`}
+                            onClick={(e) => {
+                              e.preventDefault()
+                              handleLinkClick(slug)
+                            }}
                           >
                             {menu_lavel}
                           </Link>
@@ -113,6 +145,10 @@ const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
                   <Link
                     className="flex items-center px-2 py-3 text-lg md:text-base text-gray-900 hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
                     href={`/${slug}`}
+                    onClick={(e) => {
+                      e.preventDefault()
+                      handleLinkClick(slug)
+                    }}
                   >
                     {menu_lavel}
                   </Link>
@@ -151,9 +187,16 @@ const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
             <XIcon />
             <span className="sr-only">বন্ধ করুন</span>
           </button>
+          <button
+            className="p-2 last:pr-0 hidden"
+            aria-label="search"
+            onClick={() => setShowSearch(!showSearch)}
+          >
+            <SearchIcon clss="" />
+          </button>
         </div>
 
-        <div className="hidden flex items-center justify-center print:hidden">
+        <div className="flex items-center justify-center print:hidden">
           <div className="p-3 last:pr-0 hidden md:block">
             <button
               className="flex hidden"
@@ -172,15 +215,15 @@ const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
             </button>
           </div>
 
-          <button
+          {/* <button
             className="p-2 last:pr-0"
             aria-label="search"
             onClick={() => setShowSearch(!showSearch)}
           >
             <SearchIcon clss="" />
-          </button>
+          </button> */}
           <button
-            className="p-2 last:pr-0 "
+            className="p-2 last:pr-0 hidden"
             type="button"
             aria-label="menu"
             onClick={handleSidebar}
@@ -205,13 +248,13 @@ const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
                 >
                   <SearchIcon clss="stroke-white" />
                 </button>
-                <button
+                {/* <button
                   type="button"
                   className="hidden border-l px-6 py-3 text-white bg-[var(--primary)] rounded-r"
                   onClick={() => setShowSearch(false)}
                 >
                   <XIcon clss="w-6 h-6" />
-                </button>
+                </button> */}
               </form>
             </div>
           </div>

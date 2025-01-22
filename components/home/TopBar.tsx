@@ -22,6 +22,9 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { faFacebookF, faYoutube, faXTwitter, faTiktok, faLinkedin, faInstagram, faYoutubeSquare, faTwitterSquare, faFacebookSquare, faLinkedinIn, faInstagramSquare } from '@fortawesome/free-brands-svg-icons';
+import SideBar from "../sideBar/SideBar";
+import { useTheme } from "next-themes";
+import MenuIcon from "@/public/icons/MenuIcon";
 
 function chunkArray<T>(array: T[], chunkSize: number): T[][] {
     if (!array || chunkSize <= 0) {
@@ -39,6 +42,8 @@ function chunkArray<T>(array: T[], chunkSize: number): T[][] {
 const TopBar = () => {
 
     const [openSubMenu, setOpenSubMenu] = useState(null);
+    const [showSidebar, setShowSidebar] = useState(false);
+    const { theme, setTheme } = useTheme();
 
     const {
         data: webSettingData,
@@ -47,6 +52,16 @@ const TopBar = () => {
     } = useContext(WebSettingContext);
 
     let content;
+
+    const handleSidebar = () => {
+        // Toggle the value of `showSidebar` to show or hide the sidebar
+        setShowSidebar(!showSidebar);
+      };
+
+      const handleTheme = () => {
+        // Toggle the theme between "dark" and "light" based on the current theme state
+        setTheme(theme === "dark" || theme === "system" ? "light" : "dark");
+      };
 
     if (webSettingError)
         content = <div className="text-center">There was an Error!</div>;
@@ -145,7 +160,23 @@ const TopBar = () => {
                             </button>
                         </Link>
                     </div>
+                    <button
+                        className="p-2 last:pr-0 md:hidden"
+                        type="button"
+                        aria-label="menu"
+                        onClick={handleSidebar}
+                    >
+                <MenuIcon />
+              </button>
+                    
                 </div>
+                {showSidebar && (
+                        <SideBar
+                            handleSidebar={handleSidebar}
+                            handleTheme={handleTheme}
+                            theme={`${theme}`}
+                        />
+                    )}
             </div>
         );
     }
