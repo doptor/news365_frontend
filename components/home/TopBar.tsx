@@ -138,12 +138,12 @@ const TopBar = () => {
                                                             <div>
                                                                 {
                                                                     chunkArray(subItem.data, 4).map((urlList) => {
-                                                                        return <div className="flex">
+                                                                        return <div className="flex" key={urlList.join(',')}>
                                                                             {urlList.map((link: any) => {
                                                                                 // const urlParts = url.split('/').filter((part) => part);
                                                                                 // const name = urlParts[urlParts.length - 1];
                                                                                 return <div className="flex-grow-0 flex-shrink-0 px-2 py-1" key={link.url}>
-                                                                                    <Link href={link.url} className="block whitespace-nowrap px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                                                                    <Link href={link.url} target="_blank" className="block whitespace-nowrap px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
                                                                                         <span className="mr-2"><FontAwesomeIcon icon={subItem.icon} color={subItem.icon_color} /></span>{link.name}</Link>
                                                                                 </div>
                                                                             })}
@@ -164,7 +164,7 @@ const TopBar = () => {
                         </ul>
                     </div>
                     <div className="hidden lg:flex items-center justify-center print:hidden" style={{ color: "#f04130 !important" }}>
-                        <Link className="flex items-center gap-1 py-[1px] px-3 text-md " href={youtube}>
+                        <Link className="flex items-center gap-1 py-[1px] px-3 text-md " href={"https://www.youtube.com/@DailyNiropekkho.official"}>
                             {/* <div className="font-bold"><FontAwesomeIcon icon={faTv}/> লাইভ টিভি</div> */}
                             <button className="whitespace-nowrap rounded-3xl bg-[#f04130] text-white py-1.5 px-4 text-sm">
                                 <FontAwesomeIcon icon={faTv} /> লাইভ টিভি
