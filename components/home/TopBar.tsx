@@ -81,15 +81,26 @@ const TopBar = () => {
                 subMenu: []
             },
             { label: "আর্কাইভ", key: "archive", icon: faArchive, href: "javascript:void(0)", subMenu: [] },
+            // {
+            //     label: "সোশ্যাল মিডিয়া", key: "social", icon: faThumbsUp, href: "javascript:void(0)", 
+            //         subMenu: [
+            //         fb && { label: "Facebook", icon: faFacebookSquare, icon_color: "#1877F2", href: fb.split(',') },
+            //         youtube && { label: "Youtube", icon: faYoutubeSquare, icon_color: "#FF0000", href: youtube.split(',') },
+            //         tiktok && { label: "Tiktok", icon: faTiktok, icon_color: "#000000", href: tiktok.split(',') },
+            //         linkd && { label: "LinkedIn", icon: faLinkedinIn, icon_color: "#0077B5", href: linkd.split(',') },
+            //         tw && { label: "X.com", icon: faTwitterSquare, icon_color: "#1DA1F2", href: tw.split(',') },
+            //         insta && { label: "Instagram", icon: faInstagramSquare, icon_color: "#C13584", href: insta.split(',') },
+            //     ].filter(Boolean)
+            // },
             {
                 label: "সোশ্যাল মিডিয়া", key: "social", icon: faThumbsUp, href: "javascript:void(0)", 
                     subMenu: [
-                    fb && { label: "Facebook", icon: faFacebookSquare, icon_color: "#1877F2", href: fb.split(',') },
-                    youtube && { label: "Youtube", icon: faYoutubeSquare, icon_color: "#FF0000", href: youtube.split(',') },
-                    tiktok && { label: "Tiktok", icon: faTiktok, icon_color: "#000000", href: tiktok.split(',') },
-                    linkd && { label: "LinkedIn", icon: faLinkedinIn, icon_color: "#0077B5", href: linkd.split(',') },
-                    tw && { label: "X.com", icon: faTwitterSquare, icon_color: "#1DA1F2", href: tw.split(',') },
-                    insta && { label: "Instagram", icon: faInstagramSquare, icon_color: "#C13584", href: insta.split(',') },
+                    fb && { label: "Facebook", icon: faFacebookSquare, icon_color: "#1877F2", data: fb },
+                    youtube && { label: "Youtube", icon: faYoutubeSquare, icon_color: "#FF0000", data: youtube },
+                    tiktok && { label: "Tiktok", icon: faTiktok, icon_color: "#000000", data: tiktok },
+                    linkd && { label: "LinkedIn", icon: faLinkedinIn, icon_color: "#0077B5", data: linkd },
+                    tw && { label: "X.com", icon: faTwitterSquare, icon_color: "#1DA1F2", data: tw },
+                    insta && { label: "Instagram", icon: faInstagramSquare, icon_color: "#C13584", data: insta },
                 ].filter(Boolean)
             },
         ];
@@ -100,7 +111,7 @@ const TopBar = () => {
                     <div>
                         <Link href="/" aria-label="logo"> <Image src={logo} alt="logo" width={180} height={100} /></Link>
                     </div>
-                    <div className="flex flex-wrap grow items-center justify-center print:hidden">
+                    <div className="flex flex-wrap grow items-center justify-center print:hidden ml-24">
                         <ul className="flex gap-2 whitespace-nowrap">
                             {topLinks.map((item) => {
                                 const { label, key, href } = item;
@@ -121,19 +132,19 @@ const TopBar = () => {
                                                 onMouseLeave={() => setOpenSubMenu(null)}
                                             > {/* Mega menu */}
                                                 <div className=" p-2">
-                                                    {item.subMenu.map((subItem: { label: string, icon: IconDefinition, icon_color: string, href: string[] }) => (
+                                                    {item.subMenu.map((subItem: { label: string, icon: IconDefinition, icon_color: string, data: string[] }) => (
                                                         <div key={subItem.label} className="px-2">
                                                             <div>{subItem.label}</div>
                                                             <div>
                                                                 {
-                                                                    chunkArray(subItem.href, 4).map((urlList) => {
+                                                                    chunkArray(subItem.data, 4).map((urlList) => {
                                                                         return <div className="flex">
-                                                                            {urlList.map((url: string) => {
-                                                                                const urlParts = url.split('/').filter((part) => part);
-                                                                                const name = urlParts[urlParts.length - 1];
-                                                                                return <div className="flex-grow-0 flex-shrink-0 px-2 py-1" key={url}>
-                                                                                    <Link href={url} className="block whitespace-nowrap px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
-                                                                                        <span className="mr-2"><FontAwesomeIcon icon={subItem.icon} color={subItem.icon_color} /></span>{name}</Link>
+                                                                            {urlList.map((link) => {
+                                                                                // const urlParts = url.split('/').filter((part) => part);
+                                                                                // const name = urlParts[urlParts.length - 1];
+                                                                                return <div className="flex-grow-0 flex-shrink-0 px-2 py-1" key={link.url}>
+                                                                                    <Link href={link.url} className="block whitespace-nowrap px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">
+                                                                                        <span className="mr-2"><FontAwesomeIcon icon={subItem.icon} color={subItem.icon_color} /></span>{link.name}</Link>
                                                                                 </div>
                                                                             })}
                                                                         </div>;

@@ -166,7 +166,7 @@ const SideBar = ({ handleSidebar, handleTheme, theme }: SideBarProps) => {
         className="flex-1 bg-[#cfcfcf6e] cursor-pointer"
         onClick={handleSidebar}></div>
       <div
-        className="select-none h-screen bg-white dark:bg-[var(--dark)] shadow-lg flex flex-col fixed top-0 right-0 w-80"
+        className="select-none h-screen bg-white dark:bg-[var(--dark)] shadow-lg flex flex-col fixed top-0 right-0 w-60 md:w-80"
         style={{ transition: "width 300ms cubic-bezier(0.2, 0, 0, 1) 0s" }}
       >
         <div className="flex justify-between md:justify-end items-center py-1 px-2">
