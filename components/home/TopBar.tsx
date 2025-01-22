@@ -67,8 +67,8 @@ const TopBar = () => {
             },
             { label: "আর্কাইভ", key: "archive", icon: faArchive, href: "javascript:void(0)", subMenu: [] },
             {
-                label: "সোশ্যাল মিডিয়া", key: "social", icon: faThumbsUp, href: "javascript:void(0)", 
-                    subMenu: [
+                label: "সোশ্যাল মিডিয়া", key: "social", icon: faThumbsUp, href: "javascript:void(0)",
+                subMenu: [
                     fb && { label: "Facebook", icon: faFacebookSquare, icon_color: "#1877F2", href: fb.split(',') },
                     youtube && { label: "Youtube", icon: faYoutubeSquare, icon_color: "#FF0000", href: youtube.split(',') },
                     tiktok && { label: "Tiktok", icon: faTiktok, icon_color: "#000000", href: tiktok.split(',') },
@@ -112,7 +112,7 @@ const TopBar = () => {
                                                             <div>
                                                                 {
                                                                     chunkArray(subItem.href, 4).map((urlList) => {
-                                                                        return <div className="flex">
+                                                                        return <div key={urlList.join(',')} className="flex">
                                                                             {urlList.map((url: string) => {
                                                                                 const urlParts = url.split('/').filter((part) => part);
                                                                                 const name = urlParts[urlParts.length - 1];
